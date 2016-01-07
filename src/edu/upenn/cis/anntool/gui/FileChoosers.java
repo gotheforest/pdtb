@@ -108,8 +108,8 @@ public class FileChoosers extends JFrame {
 						+ "wsj_0003\n gives the Raw text file for Section 00 file 03.",
 				JFileChooser.DIRECTORIES_ONLY);
 		outputRootTF = createTFGroup(
-				"Output/AdjudicationRoot",
-				"This is the directory such that OutputRoot"
+				"GoldRoot",
+				"This is the directory such that GoldRoot"
 						+ File.separatorChar
 						+ "00"
 						+ File.separatorChar
@@ -120,8 +120,8 @@ public class FileChoosers extends JFrame {
 				"This is the directory that contains the tipster files (w9_1..w9_9) and the ptb-tipster map files (ptb_*.tbl files).",
 				JFileChooser.DIRECTORIES_ONLY);*/
 		outputCommentRootTF = createTFGroup(
-				"OutputCommentRoot",
-				"This is the directory such that CommentRoot"
+				"GoldComment",
+				"This is the directory such that GoldComment"
 						+ File.separatorChar
 						+ "00"
 						+ File.separatorChar
@@ -129,8 +129,8 @@ public class FileChoosers extends JFrame {
 				JFileChooser.DIRECTORIES_ONLY);
 
 		annRoot1TF = createTFGroup(
-				"AnnRoot1",
-				"This is the directory such that AnnRoot"
+				"Ann1Root",
+				"This is the directory such that Ann1Root"
 						+ File.separatorChar
 						+ "00"
 						+ File.separatorChar
@@ -138,8 +138,8 @@ public class FileChoosers extends JFrame {
 				JFileChooser.DIRECTORIES_ONLY);
 
 		commentRoot1TF = createTFGroup(
-				"CommentRoot1",
-				"This is the directory such that CommentRoot"
+				"Ann1Comment",
+				"This is the directory such that Ann1Comment"
 						+ File.separatorChar
 						+ "00"
 						+ File.separatorChar
@@ -147,8 +147,8 @@ public class FileChoosers extends JFrame {
 				JFileChooser.DIRECTORIES_ONLY);	
 		
 		annRoot2TF = createTFGroup(
-				"AnnRoot2",
-				"This is the directory such that AnnRoot"
+				"Ann2Root",
+				"This is the directory such that Ann2Root"
 						+ File.separatorChar
 						+ "00"
 						+ File.separatorChar
@@ -156,8 +156,8 @@ public class FileChoosers extends JFrame {
 				JFileChooser.DIRECTORIES_ONLY);		
 		
 		commentRoot2TF = createTFGroup(
-				"CommentRoot2",
-				"This is the directory such that CommentRoot"
+				"Ann2Comment",
+				"This is the directory such that Ann2Comment"
 						+ File.separatorChar
 						+ "00"
 						+ File.separatorChar
