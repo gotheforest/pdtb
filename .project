@@ -18,17 +18,17 @@
 		<link>
 			<name>bin</name>
 			<type>2</type>
-			<location>C:/Users/alanlee/workspace/Adjudicator/bin</location>
+			<location>C:/Users/alanlee/Desktop/DISCOURSE FRESH/GITHUB/pdtb/bin</location>
 		</link>
 		<link>
 			<name>build.xml</name>
 			<type>1</type>
-			<location>C:/Users/alanlee/workspace/Adjudicator/build.xml</location>
+			<location>C:/Users/alanlee/Desktop/DISCOURSE FRESH/GITHUB/pdtb/build.xml</location>
 		</link>
 		<link>
 			<name>src</name>
 			<type>2</type>
-			<location>C:/Users/alanlee/workspace/Adjudicator/src</location>
+			<location>C:/Users/alanlee/Desktop/DISCOURSE FRESH/GITHUB/pdtb/src</location>
 		</link>
 	</linkedResources>
 </projectDescription>
