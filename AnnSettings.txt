@@ -1,11 +1,10 @@
 #This file contains user settings for your Annotator. It is safe to delete, but you will lose your settings.
-#Thu Nov 05 01:31:29 SGT 2015
-outputRoot=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\VP CONJUNCTIONS\\ADJUDICATION\\VP-B19-adjudication-package\\gold
+#Thu Jan 07 10:15:40 SGT 2016
+commentRoot2=
+commentRoot1=
+outputCommentRoot=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\TO INFINITIVES\\test\\TO_B1\\comment
+rawRoot=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\TO INFINITIVES\\test\\TO_B1\\raw
+outputRoot=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\TO INFINITIVES\\test\\TO_B1\\ann
+annRoot2=
+annRoot1=
 lang=English
-outputCommentRoot=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\VP CONJUNCTIONS\\ADJUDICATION\\VP-B19-adjudication-package\\gold-comments
-commentRoot2=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\VP CONJUNCTIONS\\ADJUDICATION\\VP-B19-adjudication-package\\robin-comments
-commentRoot1=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\VP CONJUNCTIONS\\ADJUDICATION\\VP-B19-adjudication-package\\joe-comments
-rawRoot=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\VP CONJUNCTIONS\\ADJUDICATION\\VP-B19-adjudication-package\\raw
-annRoot2=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\VP CONJUNCTIONS\\ADJUDICATION\\VP-B19-adjudication-package\\robin
-annRoot1=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\VP CONJUNCTIONS\\ADJUDICATION\\VP-B19-adjudication-package\\joe
-tipsterRoot=
