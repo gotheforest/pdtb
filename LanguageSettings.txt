@@ -1,0 +1,8 @@
+#This file contains language settings. A set of predefined settings are already provided. Some languages may require additional fonts.
+#Format:
+#LanguageName=LanguageCode,CountryCode,CharacterSet,Font,TokenizerBreakType
+English=en,US,UTF8,Default,word
+Hindi=hi,IN,UTF8,Default,character
+Japanese=ja,JP,EUC_JP,Arial Unicode MS,character
+Tamil=ta,IN,UTF8,Latha,character
+Urdu=ur,IN,UTF8,Nafees Web Naskh,character

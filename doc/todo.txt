@@ -1,0 +1,203 @@
+08/06/12
+It looks like theres a bug when I "Select Annotation", it moves that annotation to the parent, but it does not change the subgroup of the parent from 0 to 1/2/3...until reloading.  Not sure if this is a bug or intentional.
+
+11/30/11
+TODO:
+
+From email:
+-- we should show whether annotators agree fully with each other or not.
+-- After I click on 'Save Relation' or other of these buttons, all the nodes get collapsed. This should not happen, right?
+-- I can't remember what we decided whether to use the Arg2 first character for matching annotations, or to use the sentence id. 
+Right now, it's based on Arg2 first character, and this looks very awkward.
+
+DONE Use a number to group annotations that are the same.
+Allow u to see multiple annotations at once.
+Allow user to say whether something has been adjudicated.
+Allow user to group annotations together and undo grouping. (drag and drop)
+-groups/adj flag goes in a new field in the ann files.
+-When loading, if any groups are new, save the relations.
+-After dragging and dropping, relations get saved.
+-put group/flag in hidden components
+-new file containing any roots and an id for each root, and a line for each annotation containing its rootid, file, id, group number, and flag
+Allow user to select parts of an annotation.
+Save grouping data in a separate file.
+
+When moving the child to a parent, any parents that were collapsed get uncollapsed.
+
+Document the same-sentence arg2 issue.
+
+is conn enabled at correct times?
+
+DONE AnnRoot renamed to Adjudication Root
+DONE AdjudicationRoot renamed to AnnRoot1,2..etc
+DONE Renamed "new relation" to "add new relation"
+DONE Renamed "replace annotation" to select annotation
+DONE If token position is same, group together like so: Explicits in one group, Implicits/Altlex/Entrel/NoRel in another group
+DONE Display Relation Type, Sense, Arg1, Arg2, AltLex if Applicable
+DONE When creating a new annotation that matches a non-existing adjudication parent, it wasnt getting added
+
+DONE Change icons and make a key for the icons in a tooltip. Following are the tooltips:
+RED FONT: Incomplete relation
+Red X: Relation does not exist in adjudication file but similar relation exists in annotation file(s)
+Orange ?: Relation exists in adjudication file but similar relation does not exist in annotation file(s)
+Green Equal: Relation in adjudication file completely matches all similar relations in annotation file(s)
+Red Not Equal: Relation in adjudication file does not completely match all similar relations in annotation file(s)
+Green Equal: Relation in annotation file completely matches similar relation in adjudication file
+Red Not Equal: Relation in annotation file does not completely match similar relation in adjudication file
+
+
+
+10/26/11
+TODO:
+See e-mail from Dr. Joshi.
+Add ability to copy over individual parts of an adjudication.
+There are duplicate relations if:
+1. an adjudication is copied and there is another one that already exists
+2. an relation is edited to be "similar" to another on that already exists
+However, if a new relation is created that is "similar" to another one that already exists, we don't add the new relation to the list
+Not sure if this is a problem.
+
+DONE:
+Compare adjudications using sentence numbers
+-allow adding child more than once
+spans are causing a problem (when selecting a new relation type)
+fix sentence number button issue (when it is disabled it doesn't get copied to new relation)...may need to do some subclassing
+When adding or removing a relation, the new selected index may need to use the parent index if some are expanded
+Moved the cancel action in the deleteaction of rellistpanel.
+Disable delete button when selecting a ghost relation
+Color schema for incomplete relations, relations that have different children and child relations that are different.
+ghosts in list should be ignored when saving
+Disable delete, save buttons in rellist window when highlighting children
+Cancel changes should reselect relation if it is not a new relation
+Set ghost to false when saving ghost
+Replace button to replace annotation with adjudication.
+When deleting/adding a parent relation, ghost relations and children relations must be removed and added.
+
+06/02/09
+-made the find/search tokenized in the same way that selection is tokenized (instead of padding with spaces). This allows for more flexible searches among different types of break iterators in the future.
+-applied utf to comment files and annotation files instead of just the rawtext
+-fixed a selection bug when selecting tokens backwards
+-fixed a bug where if you do a drag and then push ctrl and then click without dragging, the highlights go away
+
+05/21/09
+-Fixed weird button color shade/repaint bug caused by button colors not being opaque
+-After deleting, selects the next relation
+-Changed color of search to blue-green so it doesn't clash with the conn
+-Find/search is tokenized so that the search only gets matched if it's bounded on both sides by a non-word character
+-Fixed a bug where editing an entrel and then reverting it back still require a cancel because disabled components were affecting the compare method
+-Added comment abilities
+-Fixed a bug where search string wasn't getting reset to blank if it was blank when loading a new file
+-Added previous and next buttons
+-Now, blank sections don't get loaded to prevent a bug
+-UTF8 loading in the rawtext for foreign texts
+-Filebrowser can now load whatever is in the current textfield for convenience when clicking "Browse..."
+
+
+	// TODO: where to deliver focus after saving, deleting (rellist?)
+	// TODO: the language tokenization problem is that span numbers may not
+	// match up with the actual number of letters that the spans cover. they may
+	// include the count of the accents and marks.
+	// TODO: disable save button if relation is duplicate - right now a
+	// duplicate relation doesnt get added if its new, but it can still be
+	// edited to be a duplicate
+	// TODO: use (internal) frames instead of split panes?
+	// TODO: relation checker for whole corpus? or maybe make secs/files red?
+	// TODO: make mainframe spawn filechoosers, not other way around?
+	// TODO: make buttons blank instead of just disabled
+	// TODO: combine inputaction and spanbutton action by passing in the changed
+	// object
+	// TODO: trace underlines get overwritten
+
+	// DONE: make the find/search tokenized in the same way that selection is
+	// tokenized - maybe do this by tokenizing the search string and then
+	// comparing it to the tokenized rawtext
+	// DONE: apply utf to comment files and annotation files as well as rawtext
+	// DONE: fixed a selection bug when selecting tokens backwards
+	// DONE: fixed a bug where if you do a drag and then push ctrl and
+	// then click without dragging, the highlights go away
+
+	// DONE: fixed weird button color shade/repaint bug caused by button colors
+	// not being opaque
+	// DONE: after deleting, selects the next relation
+	// DONE: changed color of search to blue-green so it doesnt clash with the
+	// conn
+	// DONE: find/search is tokenized so that the search only gets matched if
+	// it's bounded on both sides by a non-word character
+	// DONE: Fixed a bug where editing an entrel and then reverting it back
+	// still require a cancel because disabled components were affecting the
+	// compare method
+	// DONE: Added comment abilities
+	// DONE: Fixed a bug where search string wasnt getting reset to blank if it
+	// was blank
+	// DONE: Added previous and next buttons and now blank sections can't be
+	// loaded to prevent a bug
+	// DONE: UTF8 for foreign texts.
+	// DONE: Filebrowser now loads current textfield.
+
+	// DONE: why is relation selection so slow?
+	// Think it's because inputaction is called multiple times each time a new
+	// rel is selected
+	// DONE: sclasses should read/print fully
+	// DONE: explicit and altlex sclasses depend on the conn and they shouldnt
+	// DONE: make font sizes cleaner and fix font size bug
+	// DONE: fix multihighlight/tokenizer and underlining
+	// DONE: leave underlines when deleting until a new relation is loaded
+	// DONE: problem with editable combo box inputting text too fast
+	// caused by losing and then regaining focus?
+	// DONE: Make sure control stay with the controller that initiated action!
+	// esp jlist and editable comboboxes
+	// DONE: enable/disable sclasses depending on the conns?
+	// DONE: is sclasses rowcount suitable?
+	// DONE: 2 rels are same if they are same type and conn spans and arg spans
+	// are the same (sorting and equals)
+	// DONE: clear fields that arent used in the relation when saving, including
+	// the sclasses that arent used (first part done...see relation.setnewvals
+	
+	
+	old code:
+			// setMinimumSize(new Dimension(relPanel.getWidth()
+		// + splitPane.getDividerSize(), getHeight()));
+		// setFocusable(false);
+
+		// JInternalFrame rawTextFrame = new JInternalFrame(
+		// "RawText and Relation List", true, false, true, true);
+		// rawTextFrame.setLocation(0, 0);
+		// JPanel rawTextPanel = (JPanel) rawTextFrame.getContentPane();
+		// //rawTextPanel.add(comboPanel, BorderLayout.PAGE_START);
+		// rawTextPanel.add(splitPane, BorderLayout.CENTER);
+		// rawTextFrame.pack();
+		// rawTextFrame.setVisible(true);
+		// desktop.add(rawTextFrame);
+		// try {
+		// rawTextFrame.setSelected(true);
+		// } catch (java.beans.PropertyVetoException e) {
+		// e.printStackTrace();
+		// }
+
+		// relation list + relation panel
+		// JPanel rightPanel = new JPanel();
+		// rightPanel.setLayout(new BorderLayout());
+		// rightPanel.add(relListPanel, BorderLayout.CENTER);
+		// /rightPanel.add(relPanel, BorderLayout.LINE_END);
+		// rightPanel.setBorder(BorderFactory.createTitledBorder("rightPanel"));
+
+		// split Pane
+		// JScrollPane rawTextSP = new JScrollPane(rawTextPane);
+		// rawTextSP.setPreferredSize(new Dimension(200, rawTextSP
+		// .getPreferredSize().height));
+		// JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
+		// rawTextSP, rightPanel);
+		// splitPane.setOneTouchExpandable(true);
+		// splitPane.setResizeWeight(1);
+
+		// main panel
+
+		// int inset = 50;
+		// Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		// setBounds(inset, inset,
+		// screenSize.width - inset*2,
+		// screenSize.height - inset*2);
+
+		// panel.setBorder(BorderFactory.createTitledBorder("panel"));
+		// panel.add(comboPanel, BorderLayout.PAGE_START);
+		// panel.add(splitPane, BorderLayout.CENTER);

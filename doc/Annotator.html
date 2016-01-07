@@ -1,0 +1,87 @@
+<html>
+<head>
+<title>The Annotation tool</title>
+<body>
+
+<h1 align="center">The Annotation tool</h1>
+
+<br/>
+
+<h3>---Running---</h3>
+Requirements:
+<ul>
+<li><a href="Annotator-bin.zip">Annotator.jar</a></li>
+<li>Java 1.5 or later.</li>
+<li>Raw Text Files.</li>
+</ul>
+In order to Run, there are three sets of folders required:
+<br/>
+..raw/section/
+<br/>
+..ann/
+<br/>
+..comments/
+<br/>
+The names of the folders do not matter.  You are required to have at least one section folder inside raw.  Each of the rawtext files must go into any of the section folders.  For the annotation and comments folder, no sections are required during the first run.  Any annotation and comment files that are created by this program will parallel the hierarchy of the raw section folders.
+<br/>
+Start the program and you will be given a File dialog.
+<br/>
+With the above structure, you would select "raw" as the "RawRoot", "ann" as the "AnnRoot", and "comments" as the commentRoot.
+<br/>
+The first time you run the program from a new directory, these fields will be blank.  After running, your settings will be saved in the same directory as the jar file as AnnSettings.txt.
+<br/><br/>
+To change the combo box choices in the program, you can edit Options.cfg.  The numbers in the sets of choices represent the zero-based index of the default choice.  These numbers are required for the first 8 items.  The lists under the items must be in alphabetic order for this to work.  If you delete Options.cfg, the jar will revert back to a default Options.cfg inside the jar at:
+<br/>
+Annotator.jar\edu\upenn\cis\anntool\settings\Options.cfg
+<br/>
+This file will be copied back out to the same directory as the jar file next time you start the Annotator.
+<br/><br/><br/>
+
+<h3>---Using---</h3>
+Now, when the Annotator starts, you should be able to choose a raw text file by selecting its section number and the file name.  Click load to load the raw text and all of the annotations for that file.
+<br/>
+Now you can create a new relation or select a relation from the list and edit and delete the relation.  If you make any changes to a relation, you will not be able to switch relations, load, or exit without saving the relation or canceling the changes.
+<br/>
+For editing spans, the colors of the buttons match with the colors of the spans.  To create a span, you can select the text and then click the corresponding span button.  To select multiple spans, hold down ctrl (Windows/Linux) or Cmd (Mac - untested) or Spacebar (All) between selections.  To deselect a spanlist, click the corresponding span button again.
+<br/>
+There is one more handy feature that lets you search for a token.  As you type, all instances of a whole token will be highlighted in blue-green.  You can also add all instances of this token to the relation list as an Explicit connective by clicking the "Add All" Button.
+<br/>
+You can save any relation even if you have not completely filled out all of its required values.  These relations will show up with a red background in your relation list.
+<br/>
+You can also save comments in the big text box in the bottom right corner.  These comments will be saved separately from the annotation files for convenience when parsing the annotation files later.
+
+<br/><br/><br/>
+
+<h3>---Annotated File Structure---</h3>
+Each annotated relation is simply a pipe "|" delimited line with the following format:
+<br/><br/>
+Relation Type|Conn Span|Conn Src|Conn Type|Conn Pol|Conn Det|Conn Feat Span|Conn1|SClass1A|SClass1B|Conn2|SClass2A|SClass2B|Sup1 Span|Arg1 Span|Arg1 Src|Arg1 Type|Arg1 Pol|Arg1 Det|Arg1 Feat Span|Arg2 Span|Arg2 Src|Arg2 Type|Arg2 Pol|Arg2 Det|Arg2 Feat Span|Sup2 Span
+<br/><br/>
+For relation types that do not have a particular field, these fields are simply left blank
+
+<br/><br/><br/>
+
+<h3>---Comments File Structure---</h3>
+The comments files use the java properties class to allow key, value pairs, where:
+<br/>
+key = Relation Type|Conn Span|Arg1 Span|Arg2 Span
+<br/>
+value = A Multiline Comment
+
+<br/><br/><br/>
+
+<h3>---About---</h3>
+- The source code is available here: <a href="Annotator-src.zip">Annotator-src.zip</a>.
+<br/>
+- Compiled with Java 1.5.0_17 (for compatibility with most Macs)
+<br/>
+- For bugs or feature requests please feel free to e-mail Geraud Campion at geraud@seas.upenn.edu
+
+<br/><br/><br/>
+
+<h3>---Latest Bug Fixes/Added Features---</h3>
+
+
+
+</body>
+</html>
