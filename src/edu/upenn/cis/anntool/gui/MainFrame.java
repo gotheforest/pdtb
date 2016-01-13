@@ -121,8 +121,9 @@ public class MainFrame extends JFrame implements WindowListener {
 	public void selectionAction(Relation relation, Relation parent) {
 		SpanButton[] spanButtons = relPanel.selectionAction(relation, parent);
 		navPanel.cancelAction();
-		rawTextPanel.selectionAction(relation, spanButtons);		
-		relListPanel.selectionAction(parent != null, parent == null && !relation.isGhost());
+		rawTextPanel.selectionAction(relation, spanButtons);	
+				
+		relListPanel.selectionAction(parent != null, parent == null && !relation.isGhost(), relation.isRejected());
 		if (parent != null) {
 			relListPanel.acceptAction(parent != null, isValidAccept(relation, parent));
 		}
@@ -168,6 +169,22 @@ public class MainFrame extends JFrame implements WindowListener {
 		// This must be done last because it calls edit action:
 		relListPanel.saveAction(relation);		
 	}
+	
+	public void annotatorRejectAction() {
+		Relation relation = relPanel.annotatorRejectAction();
+		navPanel.cancelAction();
+		rawTextPanel.cancelAction();
+		// This must be done last because it calls edit action:
+		relListPanel.saveAction(relation);			
+	}
+	
+	public void undoRejectAction() {
+		Relation relation = relPanel.undoRejectAction();
+		navPanel.cancelAction();
+		rawTextPanel.cancelAction();
+		// This must be done last because it calls edit action:
+		relListPanel.saveAction(relation);			
+	}
 
 	public void deleteAction(Relation relation) {
 		relPanel.disableAll();
@@ -190,7 +207,7 @@ public class MainFrame extends JFrame implements WindowListener {
 		navPanel.inputAction(isSame);
 		rawTextPanel.inputAction(spanButtons);
 	}
-
+	
 	public void spanAction(SpanButton b) {
 		rawTextPanel.spanAction(b);
 	}

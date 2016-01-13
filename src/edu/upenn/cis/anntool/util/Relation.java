@@ -40,7 +40,7 @@ public class Relation implements Comparable<Relation>, Transferable {
 		originalVals = new String[LABELS.values().length];
 		for (int i = 0; i < originalVals.length; i++) {
 			originalVals[i] = "";
-		}
+		}		
 	}
 
 	/**
@@ -81,6 +81,9 @@ public class Relation implements Comparable<Relation>, Transferable {
 		if (fileManager != null) {
 			groupNumber = fileManager.getAdjudicationGroupManager()
 					.getGroupNumber(this);
+		}
+		if (originalVals[LABELS.adjudicationReason.ordinal()].equals("Rejected")) {
+			isRejected = true;
 		}
 	}
 
@@ -271,6 +274,7 @@ public class Relation implements Comparable<Relation>, Transferable {
 		originalVals[LABELS.identifier.ordinal()] = components[LABELS.identifier.ordinal()].getAnnValue();
 		originalVals[LABELS.identifierType.ordinal()] = components[LABELS.identifierType.ordinal()].getAnnValue();
 		
+		isRejected = false;
 		comment = commentPane.getAnnValue();
 		isGhost = false;
 		root = fileManager.getAnnRoot();
@@ -280,6 +284,27 @@ public class Relation implements Comparable<Relation>, Transferable {
 		setNewVals(components, commentPane);
 		originalVals[LABELS.adjudicationReason.ordinal()] = "Full Agreement";
 		originalVals[LABELS.consensus.ordinal()] =  "true";
+	}
+	
+	public void setReject(AnnComponent[] components, AnnComponent commentPane) {
+		originalVals[LABELS.adjudicationDisagreement.ordinal()] = "";
+		originalVals[LABELS.adjudicationReason.ordinal()] = "Rejected";		
+		originalVals[LABELS.consensus.ordinal()] = "";
+		
+		//commentPane.setAnnValue("");
+		comment = commentPane.getAnnValue();
+		isGhost = false;
+		isRejected = true;
+		root = fileManager.getAnnRoot();
+	}
+	
+	public void undoReject(AnnComponent[] components, AnnComponent commentPane) {
+		originalVals[LABELS.adjudicationReason.ordinal()] = "";
+		isRejected = false;
+	}
+	
+	public boolean isRejected() {
+		return isRejected;
 	}
 	
 	public void setNoVals(AnnComponent[] components, AnnComponent commentPane) {

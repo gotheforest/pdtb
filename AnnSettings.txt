@@ -1,10 +1,10 @@
 #This file contains user settings for your Annotator. It is safe to delete, but you will lose your settings.
-#Thu Jan 07 10:15:40 SGT 2016
-commentRoot2=
+#Wed Jan 13 17:25:29 SGT 2016
+commentRoot2=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\tmp\\S_B1\\pdtb2-comments
 commentRoot1=
-outputCommentRoot=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\TO INFINITIVES\\test\\TO_B1\\comment
-rawRoot=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\TO INFINITIVES\\test\\TO_B1\\raw
-outputRoot=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\TO INFINITIVES\\test\\TO_B1\\ann
-annRoot2=
-annRoot1=
+outputCommentRoot=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\tmp\\S_B1\\gold-comments
+rawRoot=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\tmp\\S_B1\\raw
+outputRoot=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\tmp\\S_B1\\gold
+annRoot2=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\tmp\\S_B1\\pdtb2
+annRoot1=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\tmp\\S_B1\\auto
 lang=English

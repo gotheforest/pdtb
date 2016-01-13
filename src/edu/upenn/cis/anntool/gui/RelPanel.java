@@ -577,6 +577,10 @@ public class RelPanel extends JPanel {
 		return relation;
 	}
 	
+	public boolean isRejected() {
+		return relation.isRejected();
+	}
+	
 	public Relation rejectAction() {
 		relation.setNoVals(relComponents, commentPane);
 		List<Relation> model = fileManager.getRelationList();
@@ -589,6 +593,18 @@ public class RelPanel extends JPanel {
 		}
 		disableAll();
 		return relation;		
+	}
+	
+	public Relation annotatorRejectAction() {
+		relation.setReject(relComponents, commentPane);
+		disableAll();
+		return relation;
+	}
+	
+	public Relation undoRejectAction() {
+		relation.undoReject(relComponents,  commentPane);
+		disableAll();
+		return relation;
 	}
 
 	public boolean inputAction() {
