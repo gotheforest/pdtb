@@ -320,7 +320,6 @@ public class FileManager {
 				in.close();
 			}
 			
-			
 			int index = 0;
 			/* Load adjudication files into a flat list */
 			for (File adjudicationRoot : adjudicationRoots) {
@@ -439,7 +438,8 @@ public class FileManager {
 			relation.setGroupNumber(i);
 			i++;
 		}
-
+		Collections.sort(relationList);
+		
 		if (anyNew) {
 			save();
 		}
@@ -547,3 +547,4 @@ public class FileManager {
 	}
 
 }
+

@@ -146,6 +146,15 @@ public class MainFrame extends JFrame implements WindowListener {
 		// If a duplicate relation is created, it does not save the relation and
 		// moves selection to the duplicate
 		Relation relation = relPanel.saveAction();
+		if (relation.getIdentifierSpan().equals("")) {	
+			if (relation.getRelationType().equals("Explicit") || relation.getRelationType().equals("AltLex")) {				
+				JOptionPane.showMessageDialog(this, "Set the Connective or AltLex span before saving");
+			} else {
+				JOptionPane.showMessageDialog(this, "Set the Arg2 span before saving");
+			}
+
+			return;
+		}		
 		navPanel.cancelAction();
 		rawTextPanel.cancelAction();
 		// This must be done last because it calls edit action:

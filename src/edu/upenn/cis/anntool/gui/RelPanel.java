@@ -87,7 +87,8 @@ public class RelPanel extends JPanel {
 			enableRelationType();
 		}				
 	};
-	
+		
+	/*
 	private ActionListener checkboxListener = new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			CheckboxComponent j = (CheckboxComponent) e.getSource();
@@ -97,6 +98,7 @@ public class RelPanel extends JPanel {
 			enableRelationType();
 		}
 	};
+	*/
 	
 	private ActionListener buttonListener = new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
@@ -215,7 +217,7 @@ public class RelPanel extends JPanel {
 		adjuReasons[9] = "PDTB2 Correction";
 		createAdjuComboBox(new LABELS[] { LABELS.adjudicationReason }, adjuReasons);
 		
-		createCheckboxComponent(new LABELS[] { LABELS.consensus });
+		//createCheckboxComponent(new LABELS[] { LABELS.consensus });
 		
 		String[] adjuDiffs = new String[9];
 		adjuDiffs[0] = "Relation Type";
@@ -248,6 +250,9 @@ public class RelPanel extends JPanel {
 		
 		PropBankTextPane identifierTypePane = new PropBankTextPane(LABELS.identifierType.toString() + ": ");
 		relComponents[LABELS.identifierType.ordinal()] = identifierTypePane;
+		
+		PropBankTextPane linkPane = new PropBankTextPane(LABELS.linkGroup.toString());
+		relComponents[LABELS.linkGroup.ordinal()] = linkPane;
 		
 		createRelTypeComboBox(new LABELS[] { LABELS.rel },
 				new OptFeat[] { Constants.relTypes });
@@ -301,7 +306,7 @@ public class RelPanel extends JPanel {
 		commentSP.setPreferredSize(new Dimension(
 				commentSP.getPreferredSize().width, 50));
 
-		addRow(new LABELS[] { LABELS.adjudicationReason, LABELS.consensus});
+		addRow(new LABELS[] { LABELS.adjudicationReason });
 		addRow(new LABELS[] { LABELS.adjudicationDisagreement });
 		addRow(new LABELS[] { LABELS.propBankRole, LABELS.propBankVerb });
 		//addRow(new LABELS[] { LABELS.identifier, LABELS.identifierType });
@@ -385,11 +390,13 @@ public class RelPanel extends JPanel {
 		}
 	}
 	
+	/*
 	private void createCheckboxComponent(LABELS[] labels) {
 		for (int i = 0; i < labels.length; i++) {
 			relComponents[labels[i].ordinal()] = new CheckboxComponent(labels[i].toString(), checkboxListener);
 		}		
 	}
+	*/
 
 	private void createRelTypeComboBox(LABELS[] labels, OptFeat[] options) {
 		for (int i = 0; i < labels.length; i++) {
@@ -427,11 +434,11 @@ public class RelPanel extends JPanel {
 	private void enableAdjuBox(boolean isParent) {
 		JComboBox adjuBox = (JComboBox) relComponents[LABELS.adjudicationReason.ordinal()].getJComponent();
 		AdjuPopupPane popup = (AdjuPopupPane) relComponents[LABELS.adjudicationDisagreement.ordinal()];
-		CheckboxComponent consensusBox = (CheckboxComponent) relComponents[LABELS.consensus.ordinal()].getJComponent();
+		//CheckboxComponent consensusBox = (CheckboxComponent) relComponents[LABELS.consensus.ordinal()].getJComponent();
 		
 		if (isParent) {
 			adjuBox.setEnabled(true);	
-			consensusBox.setEnabled(true);
+			//consensusBox.setEnabled(true);
 			String itemValue = (String) adjuBox.getSelectedItem();
 			popup.setEnabled(true);
 			if (itemValue.equals("Selected Annotator") || itemValue.equals("Select and Edit")) {
@@ -445,7 +452,7 @@ public class RelPanel extends JPanel {
 			}
 		} else {
 			adjuBox.setEnabled(false);
-			consensusBox.setEnabled(false);
+			//consensusBox.setEnabled(false);
 			popup.setEnabled(false);			
 		}
 	}
@@ -568,7 +575,9 @@ public class RelPanel extends JPanel {
 				relation.setNewVals(relComponents, commentPane);
 			}
 		}
-		disableAll();
+		if (!relation.getIdentifierSpan().equals("")) {
+			disableAll();
+		}
 		return relation;
 	}
 	

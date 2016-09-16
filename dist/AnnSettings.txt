@@ -1,0 +1,10 @@
+#This file contains user settings for your Annotator. It is safe to delete, but you will lose your settings.
+#Thu Sep 15 22:58:44 SGT 2016
+commentRoot2=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\S CONJUNCTIONS\\ADJUDICATION\\S_B19\\sam-comments
+commentRoot1=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\S CONJUNCTIONS\\ADJUDICATION\\S_B19\\robin-comments
+outputCommentRoot=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\S CONJUNCTIONS\\ADJUDICATION\\S_B19\\gold-comments
+rawRoot=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\S CONJUNCTIONS\\ADJUDICATION\\S_B19\\raw
+outputRoot=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\S CONJUNCTIONS\\ADJUDICATION\\S_B19\\gold
+annRoot2=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\S CONJUNCTIONS\\ADJUDICATION\\S_B19\\sam
+annRoot1=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\S CONJUNCTIONS\\ADJUDICATION\\S_B19\\robin
+lang=English

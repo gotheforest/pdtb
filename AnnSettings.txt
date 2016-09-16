@@ -1,10 +1,10 @@
 #This file contains user settings for your Annotator. It is safe to delete, but you will lose your settings.
-#Wed Jan 13 17:25:29 SGT 2016
-commentRoot2=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\tmp\\S_B1\\pdtb2-comments
-commentRoot1=
-outputCommentRoot=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\tmp\\S_B1\\gold-comments
-rawRoot=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\tmp\\S_B1\\raw
-outputRoot=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\tmp\\S_B1\\gold
-annRoot2=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\tmp\\S_B1\\pdtb2
-annRoot1=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\tmp\\S_B1\\auto
+#Fri Sep 16 16:13:15 SGT 2016
+commentRoot2=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\test\\S_B18\\sam-comments
+commentRoot1=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\test\\S_B18\\robin-comments
+outputCommentRoot=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\test\\S_B18_gold.tar\\S_B18_gold\\gold-comments
+rawRoot=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\test\\S_B18\\raw
+outputRoot=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\test\\S_B18_gold.tar\\S_B18_gold\\gold
+annRoot2=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\test\\S_B18\\sam
+annRoot1=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\test\\S_B18\\robin
 lang=English

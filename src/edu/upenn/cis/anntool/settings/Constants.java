@@ -21,7 +21,7 @@ public class Constants {
 				"Sup2 Span"), adjudicationReason("AdjuReason"),
 				adjudicationDisagreement("AdjuDisagr"),
 				propBankRole("PBRole"), propBankVerb("PBVerb"),
-				identifier("Identifier"), identifierType("Identifier Type"), consensus("Consensus");
+				identifier("Identifier"), identifierType("Identifier Type"), linkGroup("Link Group");
 
 		private final String name;
 
@@ -47,7 +47,7 @@ public class Constants {
 			LABELS.arg2SpanList, LABELS.arg2AttrSrc, LABELS.arg2AttrType,
 			LABELS.arg2AttrPol, LABELS.arg2AttrDet, LABELS.arg2AttrSpanList,
 			LABELS.sup2SpanList, LABELS.adjudicationReason, LABELS.adjudicationDisagreement,
-			LABELS.propBankRole, LABELS.propBankVerb, LABELS.identifier, LABELS.identifierType, LABELS.consensus};
+			LABELS.propBankRole, LABELS.propBankVerb, LABELS.identifier, LABELS.identifierType, LABELS.linkGroup};
 
 	/* Added ConnSpanList for sentence location */
 	public static final LABELS[] impLabels = new LABELS[] { LABELS.rel,
@@ -60,7 +60,7 @@ public class Constants {
 			LABELS.arg2SpanList, LABELS.arg2AttrSrc, LABELS.arg2AttrType,
 			LABELS.arg2AttrPol, LABELS.arg2AttrDet, LABELS.arg2AttrSpanList,
 			LABELS.sup2SpanList, LABELS.adjudicationReason, LABELS.adjudicationDisagreement,
-			LABELS.propBankRole, LABELS.propBankVerb, LABELS.identifier, LABELS.identifierType, LABELS.consensus};
+			LABELS.propBankRole, LABELS.propBankVerb, LABELS.identifier, LABELS.identifierType, LABELS.linkGroup};
 
 	public static final LABELS[] altLabels = expLabels;
 
@@ -68,7 +68,7 @@ public class Constants {
 	public static final LABELS[] entLabels = { LABELS.rel, LABELS.connAttrSpanList,
 			LABELS.arg1SpanList, LABELS.arg2SpanList, LABELS.arg1AttrSpanList, LABELS.arg2AttrSpanList,
 			LABELS.adjudicationReason, LABELS.adjudicationDisagreement,
-			LABELS.propBankRole, LABELS.propBankVerb, LABELS.identifier, LABELS.identifierType, LABELS.consensus};
+			LABELS.propBankRole, LABELS.propBankVerb, LABELS.identifier, LABELS.identifierType, LABELS.linkGroup};
 
 	public static final LABELS[] noLabels = entLabels;
 

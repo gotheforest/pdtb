@@ -274,6 +274,8 @@ public class Relation implements Comparable<Relation>, Transferable {
 		originalVals[LABELS.identifier.ordinal()] = components[LABELS.identifier.ordinal()].getAnnValue();
 		originalVals[LABELS.identifierType.ordinal()] = components[LABELS.identifierType.ordinal()].getAnnValue();
 		
+		setIdentifiers();
+		
 		isRejected = false;
 		comment = commentPane.getAnnValue();
 		isGhost = false;
@@ -283,13 +285,13 @@ public class Relation implements Comparable<Relation>, Transferable {
 	public void setAcceptVals(AnnComponent[] components, AnnComponent commentPane) {
 		setNewVals(components, commentPane);
 		originalVals[LABELS.adjudicationReason.ordinal()] = "Full Agreement";
-		originalVals[LABELS.consensus.ordinal()] =  "true";
+		//originalVals[LABELS.consensus.ordinal()] =  "true";
 	}
 	
 	public void setReject(AnnComponent[] components, AnnComponent commentPane) {
 		originalVals[LABELS.adjudicationDisagreement.ordinal()] = "";
 		originalVals[LABELS.adjudicationReason.ordinal()] = "Rejected";		
-		originalVals[LABELS.consensus.ordinal()] = "";
+		//originalVals[LABELS.consensus.ordinal()] = "";
 		
 		//commentPane.setAnnValue("");
 		comment = commentPane.getAnnValue();
@@ -308,10 +310,11 @@ public class Relation implements Comparable<Relation>, Transferable {
 	}
 	
 	public void setNoVals(AnnComponent[] components, AnnComponent commentPane) {
+		String originalRel = originalVals[LABELS.rel.ordinal()];
 		for (int i = 0; i < components.length; i++) {
 			originalVals[i] = "";
 		}
-		originalVals[LABELS.rel.ordinal()] = "NoRel";
+		originalVals[LABELS.rel.ordinal()] = originalRel; //"NoRel";
 		originalVals[LABELS.adjudicationReason.ordinal()] = "Rejected";
 		originalVals[LABELS.arg2SpanList.ordinal()] = ((Relation) adjudicationRelations.get(0)).originalVals[LABELS.arg2SpanList.ordinal()];
 		setPBComponents();
@@ -466,7 +469,17 @@ public class Relation implements Comparable<Relation>, Transferable {
 	}
 
 	public int getLocationStart() {
+		if (isRejected) {
+			String value = originalVals[LABELS.identifier.ordinal()];
+			if (value.contains("..")) {
+				return getLocationStart(LABELS.identifier);
+			} else {
+				return getLocationStart(LABELS.arg2SpanList);
+			}
+		}
+		
 		RELTYPELABELS relTypeLabel = getRelTypeLabel();
+				
 		if (relTypeLabel == RELTYPELABELS.Explicit) {
 //				|| relTypeLabel == RELTYPELABELS.AltLex) {
 			return getLocationStart(LABELS.connSpanList);
@@ -494,14 +507,19 @@ public class Relation implements Comparable<Relation>, Transferable {
 			if (relTypeLabel == RELTYPELABELS.Explicit || relTypeLabel == RELTYPELABELS.AltLex) {
 				if (!originalVals[LABELS.connSpanList.ordinal()].equals("")) {
 					originalVals[LABELS.identifier.ordinal()] = originalVals[LABELS.connSpanList.ordinal()].split(";")[0];
-				} else {
-					originalVals[LABELS.identifier.ordinal()] = "0..1";
 				}
+				//else {
+				//	originalVals[LABELS.identifier.ordinal()] = "0..1";
+				//}
 			} else if (relTypeLabel == RELTYPELABELS.Implicit || relTypeLabel == RELTYPELABELS.EntRel) {
-				SpanList arg2SpanList = new SpanList(originalVals[LABELS.arg2SpanList.ordinal()]);
-				int arg2Start = ((Span) arg2SpanList.first()).getStart();
-				String arg2StartStr = Integer.toString(arg2Start);
-				originalVals[LABELS.identifier.ordinal()] = arg2StartStr;
+				if (originalVals[LABELS.arg2SpanList.ordinal()].equals("")) {
+					//originalVals[LABELS.identifier.ordinal()] = "0";
+				} else {
+					SpanList arg2SpanList = new SpanList(originalVals[LABELS.arg2SpanList.ordinal()]);
+					int arg2Start = ((Span) arg2SpanList.first()).getStart();
+					String arg2StartStr = Integer.toString(arg2Start);
+					originalVals[LABELS.identifier.ordinal()] = arg2StartStr;
+				}
 			}
 		
 			originalVals[LABELS.identifierType.ordinal()] = "DEFAULT";
@@ -512,6 +530,14 @@ public class Relation implements Comparable<Relation>, Transferable {
 		String ident = originalVals[LABELS.identifier.ordinal()];
 		String identType = originalVals[LABELS.identifierType.ordinal()];
 		return ident + "-" + identType;
+	}
+	
+	public String getIdentifierSpan() {
+		return originalVals[LABELS.identifier.ordinal()];
+	}
+	
+	public String getRelationType() {
+		return originalVals[LABELS.rel.ordinal()];
 	}
 
 	private int getLocationStart(LABELS label) {
@@ -557,6 +583,10 @@ public class Relation implements Comparable<Relation>, Transferable {
 	 * */
 	
 	public boolean isSimilar(Relation o) {
+		if ( (getRelTypeLabel() == RELTYPELABELS.Implicit && o.getRelTypeLabel() == RELTYPELABELS.AltLex) ||
+			 (getRelTypeLabel() == RELTYPELABELS.AltLex && o.getRelTypeLabel() == RELTYPELABELS.Implicit) ) {
+			return getLocationStart() == o.getLocationStart();
+		} 		
 		return getIdentifier().equals(o.getIdentifier());
 	}
 	
@@ -642,7 +672,7 @@ public class Relation implements Comparable<Relation>, Transferable {
 		// } else {
 		// return 0;
 		// }
-
+				
 		if ((getRelTypeLabel() == RELTYPELABELS.Explicit || getRelTypeLabel() == RELTYPELABELS.AltLex)
 				&& (o.getRelTypeLabel() == RELTYPELABELS.Explicit || o
 						.getRelTypeLabel() == RELTYPELABELS.AltLex)
@@ -669,10 +699,16 @@ public class Relation implements Comparable<Relation>, Transferable {
 	 * relation is created, it does not save the relation and moves selection to
 	 * the duplicate
 	 */
-	public int compareTo(Relation o) {
+	public int compareTo(Relation o) {	
 		if (getLocationStart() != o.getLocationStart()) {
 			return getLocationStart() - o.getLocationStart();
-		} /*
+		} else if (this.isRejected() != o.isRejected()) {
+//			return 1;
+			return getLocationRelType() - o.getLocationRelType();
+		} else if (getRelTypeLabel() != o.getRelTypeLabel()) {
+			return getLocationRelType() - o.getLocationRelType();
+		}
+		/*
 		 * else if (getLocationRelType() != o.getLocationRelType()) { return
 		 * getLocationRelType() - o.getLocationRelType(); }
 		 */
@@ -821,7 +857,18 @@ public class Relation implements Comparable<Relation>, Transferable {
 			if (root != null) {
 				File rootHandle = new File(root);
 				ret += rootHandle.getName() + ": ";
-			}			
+			}	
+			
+			
+			if (!originalVals[LABELS.linkGroup.ordinal()].equals("")) {
+				//some legacy value
+				if (!originalVals[LABELS.linkGroup.ordinal()].contains("LINK")) {
+					ret += "";
+				} else {
+					String index = originalVals[LABELS.linkGroup.ordinal()].replace("LINK", "");
+					ret += " (" + index + ") ";
+				}
+			}
 			
 			//relation type
 			ret += originalVals[LABELS.rel.ordinal()];
@@ -895,14 +942,14 @@ public class Relation implements Comparable<Relation>, Transferable {
 				ret += fileManager
 						.getRawText()
 						.substring(detokenizedSpan.getStart(),
-								detokenizedSpan.getEnd()).toLowerCase();
+								detokenizedSpan.getEnd()).toLowerCase() + " ";
 			}
 			break;
 		case Implicit:
 			ret += originalVals[LABELS.conn1.ordinal()];
 			break;
 		}
-		return ret;
+		return ret.trim();
 	}	
 	
 	public String getConn2() {

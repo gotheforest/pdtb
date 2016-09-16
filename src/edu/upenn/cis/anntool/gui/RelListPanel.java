@@ -337,12 +337,13 @@ public class RelListPanel extends JPanel implements PanelInterface {
 				DefaultMutableTreeNode node = (DefaultMutableTreeNode) relList
 						.getLastSelectedPathComponent();
 				if (node != null) {	
-					Relation relation = (Relation) node.getUserObject();
+					mainFrame.undoRejectAction();
+					/*Relation relation = (Relation) node.getUserObject();
 					if (relation.getAdjudications().size() > 0) {
 						mainFrame.deleteAction((Relation) node.getUserObject());
 					} else {
 						mainFrame.undoRejectAction();
-					}
+					}*/
 				}
 			}
 		});
@@ -364,6 +365,7 @@ public class RelListPanel extends JPanel implements PanelInterface {
 					if (relation.getAdjudications().size() > 0) {
 						//mainFrame.deleteAction((Relation) node.getUserObject());
 						mainFrame.rejectAction();
+					
 					} else {
 						mainFrame.annotatorRejectAction();
 					}
@@ -412,8 +414,8 @@ public class RelListPanel extends JPanel implements PanelInterface {
 	}
 
 	public void newAction() {
-		newButton.setEnabled(false);
-		saveButton.setEnabled(true);
+		newButton.setEnabled(false);		
+		saveButton.setEnabled(true);		
 		cancelButton.setEnabled(true);
 		deleteButton.setEnabled(false);
 		replaceButton.setEnabled(false);
@@ -427,24 +429,31 @@ public class RelListPanel extends JPanel implements PanelInterface {
 		newButton.setEnabled(true);
 		saveButton.setEnabled(false);
 		cancelButton.setEnabled(false);
-		deleteButton.setEnabled(isNonGhostParent);	
+		//deleteButton.setEnabled(isNonGhostParent);	
 		
 		if (isRejected) {
 			deleteButton.setEnabled(true);
-		} else {		
-			DefaultMutableTreeNode node = (DefaultMutableTreeNode) relList
-				.getLastSelectedPathComponent();
-			Relation relation = (Relation) node.getUserObject();
-			if (relation.getAdjudications().size() == 0) { // don't delete if no children			
-				deleteButton.setEnabled(false);
-			}		
+		} else {
+			deleteButton.setEnabled(false);
 		}
+		/*else {		
+			if (relList != null) {
+				DefaultMutableTreeNode node = (DefaultMutableTreeNode) relList
+						.getLastSelectedPathComponent();
+				if (node != null) {
+					Relation relation = (Relation) node.getUserObject();
+					if (relation.getAdjudications().size() == 0) { // don't delete if no children
+						deleteButton.setEnabled(true);
+					}
+				}
+			}
+		}*/
 		
 		replaceButton.setEnabled(isChild);
 		acceptButton.setEnabled(isChild && acceptStatus);
 		relList.setEnabled(true);		
 		rejectButton.setEnabled(!isChild);
-		System.out.println("SEL ACTION: " + isRejected);
+
 		if (isRejected) {
 			rejectButton.setEnabled(false);
 		}		
@@ -476,9 +485,9 @@ public class RelListPanel extends JPanel implements PanelInterface {
 		DefaultMutableTreeNode node = (DefaultMutableTreeNode) relList
 				.getLastSelectedPathComponent();
 		
-		if (relation.getAdjudications().size() == 0) { // don't delete if no children			
-			return;
-		}
+	//	if (relation.getAdjudications().size() == 0) { // don't delete if no children			
+	//		return;
+	//	}
 		
 		if (node != null) {
 			int index = node.getParent().getIndex(node);
@@ -513,7 +522,7 @@ public class RelListPanel extends JPanel implements PanelInterface {
 			selectionAction(replaceButton.isEnabled(), deleteButton.isEnabled(), false);
 		} else {
 			newButton.setEnabled(false);
-			saveButton.setEnabled(!replaceButton.isEnabled());
+			saveButton.setEnabled(!replaceButton.isEnabled());							
 			cancelButton.setEnabled(true);
 			// (deletebutton stays the same)
 			// don't want to change deletebutton because this depends on whether
@@ -639,6 +648,19 @@ public class RelListPanel extends JPanel implements PanelInterface {
 	
 	public void setAcceptStatus(boolean status) {
 		acceptStatus = status;
+	}
+	
+	private boolean hasIdentifier() {
+		DefaultMutableTreeNode node = (DefaultMutableTreeNode) relList.getLastSelectedPathComponent();		
+		if (node == null) {
+			return false;
+		} else {			
+			Relation rel = (Relation) node.getUserObject();
+			if (!rel.getIdentifier().equals("")) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 }
