@@ -311,11 +311,16 @@ public class Relation implements Comparable<Relation>, Transferable {
 	
 	public void setNoVals(AnnComponent[] components, AnnComponent commentPane) {
 		String originalRel = originalVals[LABELS.rel.ordinal()];
+		String originalConnSpanList = originalVals[LABELS.rel.connSpanList.ordinal()];
+		String originalArg2SpanList = originalVals[LABELS.arg2SpanList.ordinal()];
+		
 		for (int i = 0; i < components.length; i++) {
 			originalVals[i] = "";
 		}
+		
 		originalVals[LABELS.rel.ordinal()] = originalRel; //"NoRel";
 		originalVals[LABELS.adjudicationReason.ordinal()] = "Rejected";
+		originalVals[LABELS.connSpanList.ordinal()] = originalConnSpanList;
 		originalVals[LABELS.arg2SpanList.ordinal()] = ((Relation) adjudicationRelations.get(0)).originalVals[LABELS.arg2SpanList.ordinal()];
 		setPBComponents();
 		originalVals[LABELS.identifier.ordinal()] = components[LABELS.identifier.ordinal()].getAnnValue();
@@ -825,7 +830,7 @@ public class Relation implements Comparable<Relation>, Transferable {
 			mismatches.add("Arg2");
 		}
 		
-		if (match) {
+		if (match || bothChildrenRejects()) {
 			ret = "";
 			if (verbose) {
 				ret += " Annotators agree";
@@ -969,6 +974,17 @@ public class Relation implements Comparable<Relation>, Transferable {
 			count++;
 		}	
 		return childrenValues[0].equals(childrenValues[1]);
+	}
+	
+	private boolean bothChildrenRejects() {
+		String[] childrenValues = new String[2];
+		int count = 0;		
+		for (Relation relation : adjudicationRelations) {
+			String val = relation.originalVals[LABELS.adjudicationReason.ordinal()];	
+			childrenValues[count] = val;
+			count++;
+		}
+		return childrenValues[0].equals("Rejected") && childrenValues[1].equals("Rejected");
 	}
 	
 	private String getChildrenValues(LABELS label) {

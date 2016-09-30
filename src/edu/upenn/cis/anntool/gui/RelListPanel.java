@@ -337,13 +337,13 @@ public class RelListPanel extends JPanel implements PanelInterface {
 				DefaultMutableTreeNode node = (DefaultMutableTreeNode) relList
 						.getLastSelectedPathComponent();
 				if (node != null) {	
-					mainFrame.undoRejectAction();
-					/*Relation relation = (Relation) node.getUserObject();
+					//mainFrame.undoRejectAction();
+					Relation relation = (Relation) node.getUserObject();
 					if (relation.getAdjudications().size() > 0) {
 						mainFrame.deleteAction((Relation) node.getUserObject());
 					} else {
 						mainFrame.undoRejectAction();
-					}*/
+					}
 				}
 			}
 		});
@@ -433,25 +433,30 @@ public class RelListPanel extends JPanel implements PanelInterface {
 		
 		if (isRejected) {
 			deleteButton.setEnabled(true);
-		} else {
+		} 
+		
+		/*else {
 			deleteButton.setEnabled(false);
-		}
-		/*else {		
+		}*/
+		
+		else {		
 			if (relList != null) {
 				DefaultMutableTreeNode node = (DefaultMutableTreeNode) relList
 						.getLastSelectedPathComponent();
 				if (node != null) {
 					Relation relation = (Relation) node.getUserObject();
-					if (relation.getAdjudications().size() == 0) { // don't delete if no children
-						deleteButton.setEnabled(true);
+					if (relation.getAdjudications().size() > 0) { // don't delete if no children
+						deleteButton.setEnabled(isNonGhostParent);
+					} else {
+						deleteButton.setEnabled(false);
 					}
 				}
 			}
-		}*/
+		}
 		
 		replaceButton.setEnabled(isChild);
 		acceptButton.setEnabled(isChild && acceptStatus);
-		relList.setEnabled(true);		
+		relList.setEnabled(true);			
 		rejectButton.setEnabled(!isChild);
 
 		if (isRejected) {
