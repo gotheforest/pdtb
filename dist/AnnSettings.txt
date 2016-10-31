@@ -1,10 +1,10 @@
 #This file contains user settings for your Annotator. It is safe to delete, but you will lose your settings.
-#Sat Oct 29 07:32:22 SGT 2016
+#Mon Oct 31 09:19:14 SGT 2016
 commentRoot2=
 commentRoot1=
 outputCommentRoot=
 rawRoot=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\CROSS PARAGRAPHS\\pdtb2-inter-S\\raw
 outputRoot=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\CROSS PARAGRAPHS\\Cross-paragraph Package v2\\Essays\\gold
 annRoot2=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\CROSS PARAGRAPHS\\Cross-paragraph Package v2\\Essays\\pamela
-annRoot1=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\CROSS PARAGRAPHS\\pdtb2-inter-S\\ann
+annRoot1=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\CROSS PARAGRAPHS\\pdtb2-inter-S\\pdtb2
 lang=English

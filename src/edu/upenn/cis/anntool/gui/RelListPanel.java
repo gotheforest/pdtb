@@ -702,7 +702,6 @@ public class RelListPanel extends JPanel implements PanelInterface {
 	 * 
 	 */
 	private void expandTree(JTree tree, boolean expand) {
-		System.out.println("EXPANDING");
 		DefaultMutableTreeNode root = (DefaultMutableTreeNode) tree.getModel().getRoot();
         expandAll(tree, new TreePath(root), expand, true);
     }
