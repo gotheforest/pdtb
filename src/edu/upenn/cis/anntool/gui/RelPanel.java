@@ -87,18 +87,6 @@ public class RelPanel extends JPanel {
 			enableRelationType();
 		}				
 	};
-		
-	/*
-	private ActionListener checkboxListener = new ActionListener() {
-		public void actionPerformed(ActionEvent e) {
-			CheckboxComponent j = (CheckboxComponent) e.getSource();
-			String value = relComponents[LABELS.consensus.ordinal()].getAnnValue();
-			relComponents[LABELS.consensus.ordinal()].setAnnValue(value);
-			mainFrame.inputAction((JComponent) e.getSource(), spanButtons);
-			enableRelationType();
-		}
-	};
-	*/
 	
 	private ActionListener buttonListener = new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
@@ -204,7 +192,7 @@ public class RelPanel extends JPanel {
 		this.mainFrame = mainFrame;
 		this.fileManager = fileManager;
 
-		String[] adjuReasons = new String[10];
+		String[] adjuReasons = new String[11];
 		adjuReasons[0] = "";
 		adjuReasons[1] = "Full Agreement";
 		adjuReasons[2] = "Technical Agreement";
@@ -215,6 +203,7 @@ public class RelPanel extends JPanel {
 		adjuReasons[7] = "Rejected";		
 		adjuReasons[8] = "Reannotate";
 		adjuReasons[9] = "PDTB2 Correction";
+		adjuReasons[10] = "Review";
 		createAdjuComboBox(new LABELS[] { LABELS.adjudicationReason }, adjuReasons);
 		
 		//createCheckboxComponent(new LABELS[] { LABELS.consensus });
@@ -229,7 +218,7 @@ public class RelPanel extends JPanel {
 		adjuDiffs[6] = "Sense 2A";
 		adjuDiffs[7] = "Sense 2B";
 		adjuDiffs[8] = "Attribution";
-		
+				
 		AdjuPopupPane diffPane = new AdjuPopupPane(adjuDiffs, popupListener, LABELS.adjudicationDisagreement.toString() + ": ");
 		
 		//adjuSP.setPreferredSize(new Dimension(adjuSP.getPreferredSize().width, 50));	

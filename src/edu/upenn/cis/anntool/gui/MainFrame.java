@@ -117,6 +117,10 @@ public class MainFrame extends JFrame implements WindowListener {
 		navPanel.newAction();
 		rawTextPanel.cancelAction();
 	}
+	
+	public void expandAction() {
+		relListPanel.expandAction();
+	}
 
 	public void selectionAction(Relation relation, Relation parent) {
 		SpanButton[] spanButtons = relPanel.selectionAction(relation, parent);

@@ -1,10 +1,10 @@
 #This file contains user settings for your Annotator. It is safe to delete, but you will lose your settings.
-#Sat Oct 01 03:56:41 SGT 2016
-commentRoot2=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\test\\S_B22\\sam-comments
-commentRoot1=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\test\\S_B22\\alan-comments
-outputCommentRoot=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\test\\S_B22\\gold-comments
-rawRoot=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\test\\S_B22\\raw
-outputRoot=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\test\\S_B22\\gold
-annRoot2=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\test\\S_B22\\sam
-annRoot1=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\test\\S_B22\\alan
+#Mon Oct 31 09:14:24 SGT 2016
+commentRoot2=
+commentRoot1=
+outputCommentRoot=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\CROSS PARAGRAPHS\\Cross-paragraph Package v2\\Essays\\gold-comments
+rawRoot=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\CROSS PARAGRAPHS\\pdtb2-inter-S\\raw
+outputRoot=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\CROSS PARAGRAPHS\\Cross-paragraph Package v2\\Essays\\gold
+annRoot2=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\CROSS PARAGRAPHS\\pdtb2-inter-S\\pdtb2
+annRoot1=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\CROSS PARAGRAPHS\\Cross-paragraph Package v2\\Essays\\pamela
 lang=English

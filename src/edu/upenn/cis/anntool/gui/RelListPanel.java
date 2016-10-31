@@ -24,6 +24,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
 import java.util.Collections;
+import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -40,6 +41,7 @@ import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
 import javax.swing.tree.TreeSelectionModel;
 
@@ -60,8 +62,10 @@ public class RelListPanel extends JPanel implements PanelInterface {
 	private JButton replaceButton;
 	private JButton rejectButton;
 	private JButton acceptButton;
+	private JButton expandButton;
 	private FileManager fileManager;
 	
+	private boolean expandFlag = false;	
 	private boolean acceptStatus;
 
 	RelListPanel(final MainFrame mainFrame, final FileManager fileManager) {
@@ -287,6 +291,13 @@ public class RelListPanel extends JPanel implements PanelInterface {
 		JScrollPane jsp = new JScrollPane(relList);
 		jsp.setPreferredSize(new Dimension(0, jsp.getPreferredSize().height));
 
+		expandButton = new JButton("Expand All");
+		expandButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mainFrame.expandAction();
+			}
+		});
+		
 		newButton = new JButton("Add New Relation");
 		newButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -382,7 +393,7 @@ public class RelListPanel extends JPanel implements PanelInterface {
 		add(jsp, c);
 
 		createButtons(new JButton[] { newButton, saveButton, acceptButton, cancelButton,
-				deleteButton, replaceButton, rejectButton });
+				deleteButton, replaceButton, rejectButton, expandButton });
 
 		disableAll();
 	}
@@ -400,6 +411,7 @@ public class RelListPanel extends JPanel implements PanelInterface {
 
 	private void disableAll() {
 		newButton.setEnabled(false);
+		expandButton.setEnabled(false);
 		saveButton.setEnabled(false);
 		cancelButton.setEnabled(false);
 		deleteButton.setEnabled(false);
@@ -409,12 +421,13 @@ public class RelListPanel extends JPanel implements PanelInterface {
 	}
 
 	public void loadAction() {
+		expandReset();
 		load();
 		cancelAction();
 	}
 
 	public void newAction() {
-		newButton.setEnabled(false);		
+		newButton.setEnabled(false);
 		saveButton.setEnabled(true);		
 		cancelButton.setEnabled(true);
 		deleteButton.setEnabled(false);
@@ -425,8 +438,21 @@ public class RelListPanel extends JPanel implements PanelInterface {
 		rejectButton.setEnabled(false);
 	}
 
+	public void expandAction() {
+		if (expandFlag == true) {
+			expandButton.setText("Expand All");
+			expandTree(relList, false);
+			expandFlag = false;
+		} else {
+			expandButton.setText("Collapse All");
+			expandTree(relList, true);		
+			expandFlag = true;
+		}
+	}
+	
 	public void selectionAction(boolean isChild, boolean isNonGhostParent, boolean isRejected) {
 		newButton.setEnabled(true);
+		expandButton.setEnabled(true);
 		saveButton.setEnabled(false);
 		cancelButton.setEnabled(false);
 		//deleteButton.setEnabled(isNonGhostParent);	
@@ -512,6 +538,7 @@ public class RelListPanel extends JPanel implements PanelInterface {
 
 	public void cancelAction() {
 		newButton.setEnabled(true);
+		expandButton.setEnabled(true);
 		saveButton.setEnabled(false);
 		cancelButton.setEnabled(false);
 		deleteButton.setEnabled(false);
@@ -567,7 +594,7 @@ public class RelListPanel extends JPanel implements PanelInterface {
 						.getRelationID());
 			}
 		}
-
+		
 		fileManager.insertAdjudicationRelations();
 		List<Relation> model = fileManager.getRelationList();
 		Collections.sort(model);
@@ -597,6 +624,8 @@ public class RelListPanel extends JPanel implements PanelInterface {
 						relListModel.getRoot(), node }));
 			}
 		}
+		
+		//expandTree(relList, true);
 	}
 
 	/**
@@ -667,5 +696,43 @@ public class RelListPanel extends JPanel implements PanelInterface {
 		}
 		return false;
 	}
+	
+	/* 
+	 * Expands all nodes of relation list tree
+	 * 
+	 */
+	private void expandTree(JTree tree, boolean expand) {
+		System.out.println("EXPANDING");
+		DefaultMutableTreeNode root = (DefaultMutableTreeNode) tree.getModel().getRoot();
+        expandAll(tree, new TreePath(root), expand, true);
+    }
+
+    private void expandAll(JTree tree, TreePath path, boolean expand, boolean isRoot) {
+    	DefaultMutableTreeNode node = (DefaultMutableTreeNode) path.getLastPathComponent();
+
+        if (node.getChildCount() >= 0) {        	
+            Enumeration enumeration = node.children();
+            while (enumeration.hasMoreElements()) {
+                TreeNode n = (TreeNode) enumeration.nextElement();
+                TreePath p = path.pathByAddingChild(n);
+
+                expandAll(tree, p, expand, false);
+            }
+        }
+
+        if (expand) {
+            tree.expandPath(path);
+        } else {
+        	if (!isRoot) { //don't collapse root 
+        		tree.collapsePath(path);
+        	}
+        }
+    }
+    
+    private void expandReset() {
+		expandButton.setText("Expand All");
+		expandFlag = false;
+		expandButton.setEnabled(true);    	    	
+    }
 
 }
