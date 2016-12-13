@@ -367,6 +367,7 @@ public class Relation implements Comparable<Relation>, Transferable {
 	}
 
 	public String getRelationID() {
+		System.out.println("original vals length: " + originalVals.length);
 		return originalVals[LABELS.rel.ordinal()] + sep
 				+ originalVals[LABELS.connSpanList.ordinal()] + sep
 				+ originalVals[LABELS.arg1SpanList.ordinal()] + sep
@@ -531,6 +532,10 @@ public class Relation implements Comparable<Relation>, Transferable {
 		}
 	}
 	
+	public String getTask() {
+		return originalVals[LABELS.identifierType.ordinal()];
+	}
+	
 	public String getIdentifier() {
 		String ident = originalVals[LABELS.identifier.ordinal()];
 		String identType = originalVals[LABELS.identifierType.ordinal()];
@@ -589,8 +594,13 @@ public class Relation implements Comparable<Relation>, Transferable {
 	
 	public boolean isSimilar(Relation o) {
 		if ( (getRelTypeLabel() == RELTYPELABELS.Implicit && o.getRelTypeLabel() == RELTYPELABELS.AltLex) ||
-			 (getRelTypeLabel() == RELTYPELABELS.AltLex && o.getRelTypeLabel() == RELTYPELABELS.Implicit) ) {
-			return getLocationStart() == o.getLocationStart();
+			 (getRelTypeLabel() == RELTYPELABELS.AltLex && o.getRelTypeLabel() == RELTYPELABELS.Implicit) ||
+			 (getRelTypeLabel() == RELTYPELABELS.EntRel && o.getRelTypeLabel() == RELTYPELABELS.AltLex)   ||
+			 (getRelTypeLabel() == RELTYPELABELS.AltLex && o.getRelTypeLabel() == RELTYPELABELS.EntRel)	  ||
+			 (getRelTypeLabel() == RELTYPELABELS.NoRel && o.getRelTypeLabel() == RELTYPELABELS.AltLex)    ||
+			 (getRelTypeLabel() == RELTYPELABELS.AltLex && o.getRelTypeLabel() == RELTYPELABELS.NoRel)	) {
+			
+			return getLocationStart() == o.getLocationStart() && getTask().equals(o.getTask());			
 		} 		
 		return getIdentifier().equals(o.getIdentifier());
 	}

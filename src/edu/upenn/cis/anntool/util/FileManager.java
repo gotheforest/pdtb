@@ -71,9 +71,17 @@ public class FileManager {
 
 	public FileManager(String rawRoot, String annRoot, String tipsterRoot,
 			String outputCommentRoot, List<String> adjudicationRoots, List<String> commentRoots, Language lang) {
-		this.rawRoot = new File(rawRoot);
-		this.annRoot = new File(annRoot);
-		this.outputCommentRoot = new File(outputCommentRoot);
+		System.out.println("RAW: " + rawRoot);
+		System.out.println("ANN: " + annRoot);
+		System.out.println("COM: " + outputCommentRoot);
+		
+		this.rawRoot = new File(rawRoot.trim());
+		this.annRoot = new File(annRoot.trim());
+		if (outputCommentRoot != null && !outputCommentRoot.equals("")) {
+			this.outputCommentRoot = new File(outputCommentRoot.trim());
+		} else {
+			this.outputCommentRoot = null;
+		}
 		for (String adjudicationRoot : adjudicationRoots) {
 			this.adjudicationRoots.add(new File(adjudicationRoot));
 		}
@@ -290,16 +298,19 @@ public class FileManager {
 			// set adjudicationmanager node
 			adjudicationGroupManager.setSecFile(sec, fil);
 
+			Properties commentMap = new Properties();
 			/* Load comments */
+			if (outputCommentRoot != null) {
 			commentSec = new File(outputCommentRoot, sec);
 			commentFil = new File(commentSec, fil);
-			Properties commentMap = new Properties();
+
 			if (commentFil.exists()) {
 				FileInputStream in = new FileInputStream(commentFil);
 				commentMap.load(in);
 				in.close();
 			}
-
+			}
+			
 			/* Load ann file into the relation list */
 			annSec = new File(annRoot, sec);
 			annFil = new File(annSec, fil);
@@ -338,8 +349,11 @@ public class FileManager {
 							new InputStreamReader(new BufferedInputStream(
 									new FileInputStream(adjudicationFile)),
 									"UTF8"));
+					int iii=0;
+					System.out.println("ADJU: " + adjudicationFile);
 					for (String next = in.readLine(); next != null; next = in
 							.readLine()) {
+						System.out.println("III: " + iii + " " + next);
 						adjudicationList.add(new Relation(this, next,
 								currentCommentMap, adjudicationRoot.getPath()));
 
@@ -498,23 +512,66 @@ public class FileManager {
 			}
 			annOut.close();
 
-			//always write to output comment root
-			File outputCommentSec = new File(outputCommentRoot, sec);
-			File outputCommentFil = new File(outputCommentSec, fil);			
 			
-			if (commentMap.isEmpty()) {
-				//commentFil.delete();
-				outputCommentFil.delete();
-			} else {
+			//write to output comment root if comment root is set
+			File outputCommentSec = null;
+			File outputCommentFil = null;
 			
-				//commentSec.mkdirs();
-				outputCommentSec.mkdirs();				
-//				FileOutputStream commentOut = new FileOutputStream(commentFil);
-				FileOutputStream commentOut = new FileOutputStream(outputCommentFil);
-				commentMap.store(commentOut, null);
-				commentOut.close();
+			//System.out.println("OCR:" + 	outputCommentRoot.getAbsolutePath() + "XXXXX");		
+			
+			if (outputCommentRoot != null) {	
+				outputCommentSec = new File(outputCommentRoot, sec);
+				outputCommentFil = new File(outputCommentSec, fil);
+				if (commentMap.isEmpty()) {
+					//commentFil.delete();
+					outputCommentFil.delete();
+				}	 else {			
+					System.out.println("WRITING COMMENTS");
+					//commentSec.mkdirs();
+					outputCommentSec.mkdirs();				
+					//FileOutputStream commentOut = new FileOutputStream(commentFil);
+					FileOutputStream commentOut = new FileOutputStream(outputCommentFil);
+					commentMap.store(commentOut, null);
+					commentOut.close();
+				}
 			}
 
+
+			if (relationList.size() == 0) {  //no relations left
+				if (annFil.exists()) {
+					annFil.delete();
+				}
+				if (annSec.listFiles().length == 0) {
+					annSec.delete();
+				}
+			}			
+
+			if (relationList.size() == 0) {  //no relations left
+				if (annFil.exists()) {
+					annFil.delete();
+				}
+				
+				if (annSec.exists()) {					
+					if (annSec.listFiles().length == 0) {
+						annSec.delete();
+					}
+				}
+				
+				if (outputCommentFil != null) {
+					if (outputCommentFil.exists()) {
+						outputCommentFil.delete();
+					}
+				}
+
+				if (outputCommentSec != null) {
+					if (outputCommentSec.exists()) {
+						if (outputCommentSec.listFiles().length == 0) {
+							outputCommentSec.delete();
+						}
+					}
+				}
+			}
+			
 			adjudicationGroupManager.save(relationList);
 		} catch (IOException e) {
 			e.printStackTrace();

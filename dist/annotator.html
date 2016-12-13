@@ -1,0 +1,311 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="style.css" type="text/css" />
+<script type="text/javascript" src="smoothscroll.js" ></script>
+<title>PDTB: Penn Discourse Treebank</title>
+</head>
+<body>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+  <td>
+  	<table id="header_department" width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="40"><img src="img/shield.gif" align="right"/></td>
+        <td align="left"><h4>&nbsp;University of Pennsylvania</h4></td>
+        <td width="450" height="39" background="img/college_hall.gif" style="background-repeat:no-repeat"><h5>Institute For Research in Cognitive Science</h5></td>
+      </tr>
+    </table>
+    <table id="header_logo" width="100%" border="0" cellspacing="0" cellpadding="0" background="img/wordcloud_5.gif">
+      <tr>
+        <td width="100%" height="150" />
+        <td><img src="img/pdtb.gif" align="right"/></td>
+        <!--style="white-space:nowrap"-->
+        <!--div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Penn Discourse Treebank&nbsp;<br />
+            PDTB&nbsp;</div-->
+      </tr>
+    </table>
+    <!--table id="nav" width="100%" cellpadding="0" cellspacing="0" bgcolor="#990000" align="center">                       
+      <tr>      
+      		<td width="150"></td>
+            <td><a href="index.shtml">Home</a></td>
+            <td><a href="people.shtml">People</a></td>
+            <td><a href="publications.shtml">Publications</a></td>
+            <td><a href="tools.shtml">Tools</a></td>
+            <td id="last_list_item"><a href="courses.shtml">Courses</a></td>
+            <td width="130"></td>
+      </tr>
+    </table-->
+  </td>
+</tr>
+  <tr>
+    <td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+
+<td width="150" height="39" background="img/wordcloud_7.gif"/>
+
+<td width="39" height="39" background="img/topleft.gif"/>
+<td height="39" background="img/top.gif" style="background-repeat:repeat-x"/>
+<td width="39" height="39" background="img/topright.gif"/>
+
+<td width="130" rowspan="3" background="img/wordcloud_8.gif" style="background-position:right bottom"/>
+
+</tr>
+        <tr>
+          <td id="left" rowspan="2" background="img/wordcloud_9.gif" style="background-position:left bottom"><table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td width="39" height="39" background="img/menu_topleft.gif"/>
+      <td width="72" height="39" background="img/menu_top.gif" style="background-repeat:repeat-x"/>
+      <td width="39" height="39" background="img/menu_topright.gif"/>
+    </tr>
+    <tr>
+      <td width="39" background="img/menu_left.gif" style="background-repeat:repeat-y"/>
+      <td id="menu" width="72"><ul class="ul0">
+          <li class="li0"><a href="index.shtml">Home</a></li>
+          <li class="li0"><a href="people.shtml">People</a></li>
+          <li class="li0"><a href="publications.shtml">Publications</a></li>
+          <li class="li0"><a href="tools.shtml">Tools</a></li>
+          <li class="li0"><a href="bibliography-year.shtml">Bibliography</a></li>
+          <li class="li0"><a href="events.shtml">Events</a></li>
+        </ul></td>
+      <td width="39" background="img/menu_right.gif" style="background-repeat:repeat-y"/>
+    </tr>
+    <tr>
+      <td width="39" height="39" background="img/menu_bottomleft.gif"/>
+      <td width="72" height="39" background="img/menu_bottom.gif" style="background-repeat:repeat-x"/>
+      <td width="39" height="39" background="img/menu_bottomright.gif"/>
+    </tr>
+  </table></td>
+<td width="39" background="img/left.gif" style="background-repeat:repeat-y"/>
+
+          <td id="center"><!-----------------------------------CONTENT BEGINS HERE------------------------------------------>
+  <h2 align="center">THE PDTB ANNOTATOR</h2>
+
+<p>  
+The PDTB Annotator is a tool for annotating and adjudicating discourse relations using the PDTB Annotation Framework.  It enables the annotation of text files with minimal preprocessing - the user simply needs to organize their text files into the correct directory structures before loading them into the Annotator. 
+</p>
+
+<h4>Prerequisites and Download</h4>
+
+<p>
+The latest version of the PDTB Annotator is Annotator version 4. The Annotator runs locally on the user's computer. To run the tool, users should have at least version 6 of the Java Runtime Environment installed on their computer.
+</p>
+
+<p>
+Check if you have Java installed <a href="https://www.java.com/en/download/installed.jsp">here</a>.
+
+<p>
+Once Java is running on your computer, download the Annotator using the following links:
+</p>
+
+<p>
+<a href="http://www.seas.upenn.edu/~pdtb/tools/Annotator_v4.0_java8.jar">Annotator version 4 for Java 8</a>. 
+</p>
+
+<p>
+Users who prefer to use an older JRE (minimum Java 6) can download this version of the tool:
+</p>
+
+<p>
+<a href="http://www.seas.upenn.edu/~pdtb/tools/Annotator_v4.0_java6.jar">Annotator version 4 for Java 6</a>.
+</p>
+
+<p>
+A config file named Options.cfg is also necessary to run the tool:
+</p>
+
+<p>
+<a href="http://www.seas.upenn.edu/~pdtb/tools/Options.cfg">Download Options.cfg</a>.
+</p>
+
+<h4>Setup</h4>
+
+<h5>Step 1 - Gather your text files and convert to UTF-8</h5>
+
+<p>
+Gather the text files that you wish to annotate. Ensure that these files are saved in UTF-8 (Unicode).  There are several ways to convert a file to UTF-8. The following sites offer several suggestions:
+</p>
+
+<a href="http://support.smqueue.com/support/solutions/articles/159273-saving-a-text-file-on-a-mac-or-pc-in-utf-8">Saving a text file on a Mac or PC in UTF-8</a>
+<br/>
+<a href="https://docs.moodle.org/24/en/Converting_files_to_UTF-8">Converting files to UTF-8</a>
+
+<h5>Step 2 - Organize your text files into a directory structure</h5>
+
+<p>
+Create a directory that will contain your text files. You should create a base directory, and then create at least one subdirectory within the base directory. The text files are contained within these subdirectories.</p>
+
+<p>For example, you may have six text files to annotate. You wish to organize these six files into three different subdirectories. You could create a directory structure as follows:</p>
+
+		<ul>
+			<li>MyTexts
+				<ul>
+					<li>Dir1
+						<ul>
+							<li>Dir1_Text1</li>
+							<li>Dir1_Text2</li>
+							<li>Dir1_Text3</li>
+						</ul>
+					</li>
+					<li>Dir2
+						<ul>
+							<li>Dir2_Text1</li>
+						</ul>
+					</li>
+					<li>Dir3
+						<ul>
+							<li>Dir3_Text1</li>
+							<li>Dir3_Text2</li>
+						</ul>
+					</li>						
+				</ul>
+			</li>
+		</ul>
+
+<p>
+In the above example, <i>MyTexts</i> is the name of the base directory of your text files, <i>Dir1</i>, <i>Dir2</i> and <i>Dir3</i> are the subdirectories, and the files within each subdirectory are your actual text files (<i>Dir1_Text1</i>, <i>Dir1_Text2</i>, etc.).
+</p>
+
+<p>
+(Note: a minimum of one subdirectory is needed.  So even if you have just one text file to annotate, you need to create a subdirectory that will contain this text file.)
+</p>
+
+<p>
+You could name your directories and files as you wish. It is suggested that all your text files are given unique names according to some convention, like the numberings used in the above example.
+</p>
+
+<h5>Step 3 - Create a directory for your annotation files</h5>
+
+<p>
+The next step is to create a directory where you would like to save the annotation files that the tool will generate as you annotate. You simply need to create an empty directory in this step and you can name the directory as you wish so long as it differs from the name of the base directory of your text files created in step 2. 
+</p>
+
+<p>As you annotate, the tool will dynamically create subdirectories and annotation files corresponding to the structure and naming conventions set up in Step 2 for your text files.
+
+<h5>Step 4 (Optional) - Create a directory for your comment files</h4>
+
+<p>
+The tool allows you to add comments for each token that is annotated. When you add a comment for a token, a separate comment file is created corresponding to the annotation file containing that token.
+</p>
+
+<p>
+For this to work, simply create an empty directory where your comment files will be saved.  As before, this comments base directory can be named as you wish so long as it is different from the directories created in Steps 2 and 3.
+</p>
+
+<h4>Running the Tool</h4>
+
+<p>
+To load the tool, first place the Options.cfg that you downloaded into the same directory as Adjudicator.jar.  Then launch Adjudicator.jar either by double-clicking (Windows/MAC) or running the following command (UNIX/Linux/MAC) from the current directory:
+</p>
+
+<p>
+java -jar Adjudicator.jar
+</p>
+
+<p>
+A file chooser window will appear.  Only the top two rows (or three if there is a base directory for comments) are relevant.  For "RawRoot", select the path to the base directory containing the raw text files that has been prepared according to the instructions above. For "AnnRoot", select the path to the annotation base directory.
+</p>
+
+<p>
+<img src="./images/chooser.jpg" id="resize">
+</p>
+
+<p>
+Click on OK and the tool should launch.
+</p>
+
+<p>
+<img src="./annotator/mainpanel.jpg" id="resize">
+</p>
+
+<h4>File Format</h4>
+
+<p>
+Annotations are stored within a simple file format - each token is stored as a pipe-delimited row of text. Seven new fields have been added to the original pipe-delimited format and these are marked in <span style="color:blue;">blue</span> in the table below:
+</p><p>
+
+</p><table border="1" width="80%">
+  <tbody><tr><th colspan="2">Description of fields within <i>ann</i> files</th>
+  </tr><tr><td>Relation Type</td><td>Explicit, Implicit, AltLex, EntRel, NoRel</td></tr>
+  <tr><td>Conn Span</td><td>Text Span of the Connective</td></tr>
+  <tr><td>Conn Src</td><td>Connective's Source</td></tr>
+  <tr><td>Conn Type</td><td>Connective's Type</td></tr>
+  <tr><td>Conn Pol</td><td>Connective's Polarity</td></tr>
+  <tr><td>Conn Det</td><td>Connective's Determinacy</td></tr>
+  <tr><td>Conn Feat Span</td><td>Connective's Feature Span</td></tr>
+  <tr><td>Conn1</td><td>Explicit Connective / First Implicit Connective</td></tr>
+  <tr><td>SClass1A</td><td>First Semantic Class of the First Connective</td></tr>
+  <tr><td>SClass1B</td><td>Second Semantic Class of the First Connective</td></tr>
+  <tr><td>Conn2</td><td>Second Implicit Connective</td></tr>
+  <tr><td>SClass2A</td><td>First Semantic Class of the Second Connective</td></tr>                                            
+  <tr><td>SClass2B</td><td>Second Semantic Class of the Second Connective</td></tr>
+  <tr><td>Sup1 Span</td><td>Text Span of the First Argument's Supplement</td></tr>
+  <tr><td>Arg1 Span</td><td>Text Span of the First Argument</td></tr>
+  <tr><td>Arg1 Src</td><td>First Argument's Source</td></tr>
+  <tr><td>Arg1 Type</td><td>First Argument's Type</td></tr>  
+  <tr><td>Arg1 Pol</td><td>First Argument's Polarity</td></tr>
+  <tr><td>Arg1 Det</td><td>First Argument's Determinacy</td></tr>  
+  <tr><td>Arg1 Feat Span</td><td>Text Span of the First Argument's Feature</td></tr>  
+  <tr><td>Arg2 Span</td><td>Text Span of the Second Argument</td></tr>
+  <tr><td>Arg2 Src</td><td>Second Argument's Source</td></tr>
+  <tr><td>Arg2 Type</td><td>Second Argument's Type</td></tr>  
+  <tr><td>Arg2 Pol</td><td>Second Argument's Polarity</td></tr>
+  <tr><td>Arg2 Det</td><td>Second Argument's Determinacy</td></tr>  
+  <tr><td>Arg2 Feat Span</td><td>Text Span of the Second Argument's Feature</td></tr>                                      
+  <tr><td>Sup2 Span</td><td>Text Span of the Second Argument's Supplement</td></tr>
+
+  <tr style="color:blue;"><td>Adju Reason</td><td>The Adjudication Reason</td></tr>
+  <tr style="color:blue;"><td>Adju Disagr</td><td>The type of the Adjudication disagreement</td></tr>
+  <tr style="color:blue;"><td>PB Verb</td><td>The PropBank verb of the main clause of this relation</td></tr>
+  <tr style="color:blue;"><td>PB Role</td><td>The PropBank role of the PropBank verb</td></tr>
+  <tr style="color:blue;"><td>Identifier</td><td>The unique identifier of this token within the annotation file</td></tr>
+  <tr style="color:blue;"><td>Task</td><td>The name of the task for which the token was annotated</td></tr>
+  <tr style="color:blue;"><td>Link</td><td>The link id of the token</td></tr>
+  </tbody></table>
+
+</p>
+
+<p>
+To capture the association between the two tokens, the Link field has been provided. It should be populated with a string made up of the keyword LINK followed by a numerical index. Linked tokens will share the same link values.  E.g.
+</p>
+
+<p>
+Explicit|5947..5950|Wr|Comm|Null|Null|||Expansion.Conjunction| .... |5947..5950|VP-CONJ|<b>LINK3</b>
+<br>
+Implicit||Wr|Comm|Null|Null||instead|Expansion.Substitution.Arg2-as-subst| .... |5947|VP-CONJ|<b>LINK3</b>
+</p>
+
+<p>
+Note that this linking can only be done as a post-processing step. There is no current facility within the tool to add linking during annotation or adjudication.
+</p>
+<p>
+For questions/comments, please contact Alan Lee at aleewk AT seas.upenn.edu
+</p>
+
+            <!-----------------------------------CONTENT ENDS HERE------------------------------------------></td>
+          <td width="39" background="img/right.gif" style="background-repeat:repeat-y"/>
+        </tr>
+        <tr>
+<td width="39" height="39" background="img/bottomleft.gif"/>
+<td height="39" background="img/bottom.gif" style="background-repeat:repeat-x"/>
+<td width="39" height="39" background="img/bottomright.gif"/>
+</tr>
+
+<tr><td colspan="5">
+<table id="footer" width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td height="30" background="img/wordcloud_1.gif" width="50%" style="background-position:left top"/>
+    <td id="footer" style="white-space:nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#169; The Penn Discourse Treebank&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td height="30" background="img/wordcloud_2.gif" width="50%" style="background-position:right top"/>
+  </tr>
+</table>
+</td></tr>
+
+<!--tr><td colspan="2"/><td id="footer">&#169; The Penn Discourse TreeBank</td><td colspan="2"/></tr-->
+      </table></td>
+  </tr>
+</table>
+</body>
+</html>

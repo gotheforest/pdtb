@@ -32,6 +32,7 @@ import java.util.Set;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
@@ -59,6 +60,7 @@ public class RelListPanel extends JPanel implements PanelInterface {
 	private JButton cancelButton;
 	private JButton saveButton;
 	private JButton deleteButton;
+	private JButton undoButton;
 	private JButton replaceButton;
 	private JButton rejectButton;
 	private JButton acceptButton;
@@ -342,8 +344,25 @@ public class RelListPanel extends JPanel implements PanelInterface {
 			}
 		});
 
-		deleteButton = new JButton("Undo");	
+		deleteButton = new JButton("Delete");
 		deleteButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int dialogResult = JOptionPane.showConfirmDialog (null, "Are you sure you want to delete this token?", "Warning", JOptionPane.YES_NO_OPTION);
+				if(dialogResult == JOptionPane.YES_OPTION){
+					DefaultMutableTreeNode node = (DefaultMutableTreeNode) relList
+							.getLastSelectedPathComponent();				
+					if (node != null) {					
+						Relation relation = (Relation) node.getUserObject();
+						if (node.getLevel() == 1) {
+							mainFrame.deleteAction(relation);
+						}
+					}
+				}
+			}
+		});
+		
+		undoButton = new JButton("Undo");	
+		undoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DefaultMutableTreeNode node = (DefaultMutableTreeNode) relList
 						.getLastSelectedPathComponent();
@@ -393,7 +412,7 @@ public class RelListPanel extends JPanel implements PanelInterface {
 		add(jsp, c);
 
 		createButtons(new JButton[] { newButton, saveButton, acceptButton, cancelButton,
-				deleteButton, replaceButton, rejectButton, expandButton });
+				undoButton, replaceButton, rejectButton, expandButton, deleteButton });
 
 		disableAll();
 	}
@@ -414,7 +433,7 @@ public class RelListPanel extends JPanel implements PanelInterface {
 		expandButton.setEnabled(false);
 		saveButton.setEnabled(false);
 		cancelButton.setEnabled(false);
-		deleteButton.setEnabled(false);
+		undoButton.setEnabled(false);
 		replaceButton.setEnabled(false);
 		acceptButton.setEnabled(false);
 		rejectButton.setEnabled(false);
@@ -430,7 +449,7 @@ public class RelListPanel extends JPanel implements PanelInterface {
 		newButton.setEnabled(false);
 		saveButton.setEnabled(true);		
 		cancelButton.setEnabled(true);
-		deleteButton.setEnabled(false);
+		undoButton.setEnabled(false);
 		replaceButton.setEnabled(false);
 		acceptButton.setEnabled(false);
 		relList.clearSelection();
@@ -458,7 +477,7 @@ public class RelListPanel extends JPanel implements PanelInterface {
 		//deleteButton.setEnabled(isNonGhostParent);	
 		
 		if (isRejected) {
-			deleteButton.setEnabled(true);
+			undoButton.setEnabled(true);
 		} 
 		
 		/*else {
@@ -472,9 +491,9 @@ public class RelListPanel extends JPanel implements PanelInterface {
 				if (node != null) {
 					Relation relation = (Relation) node.getUserObject();
 					if (relation.getAdjudications().size() > 0) { // don't delete if no children
-						deleteButton.setEnabled(isNonGhostParent);
+						undoButton.setEnabled(isNonGhostParent);
 					} else {
-						deleteButton.setEnabled(false);
+						undoButton.setEnabled(false);
 					}
 				}
 			}
@@ -541,7 +560,7 @@ public class RelListPanel extends JPanel implements PanelInterface {
 		expandButton.setEnabled(true);
 		saveButton.setEnabled(false);
 		cancelButton.setEnabled(false);
-		deleteButton.setEnabled(false);
+		undoButton.setEnabled(false);
 		replaceButton.setEnabled(false);
 		acceptButton.setEnabled(false);
 		relList.clearSelection();
@@ -551,7 +570,7 @@ public class RelListPanel extends JPanel implements PanelInterface {
 
 	public void inputAction(boolean isSame) {
 		if (isSame) {
-			selectionAction(replaceButton.isEnabled(), deleteButton.isEnabled(), false);
+			selectionAction(replaceButton.isEnabled(), undoButton.isEnabled(), false);
 		} else {
 			newButton.setEnabled(false);
 			saveButton.setEnabled(!replaceButton.isEnabled());							

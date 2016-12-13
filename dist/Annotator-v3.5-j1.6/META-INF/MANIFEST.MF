@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Rsrc-Class-Path: ./
+Class-Path: .
+Rsrc-Main-Class: edu.upenn.cis.anntool.gui.FileChoosers
+Main-Class: org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader
+

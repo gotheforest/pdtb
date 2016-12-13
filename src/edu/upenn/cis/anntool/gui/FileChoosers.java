@@ -108,8 +108,8 @@ public class FileChoosers extends JFrame {
 						+ "wsj_0003\n gives the Raw text file for Section 00 file 03.",
 				JFileChooser.DIRECTORIES_ONLY);
 		outputRootTF = createTFGroup(
-				"GoldRoot",
-				"This is the directory such that GoldRoot"
+				"WorkRoot",
+				"This is the directory such that WorkRoot"
 						+ File.separatorChar
 						+ "00"
 						+ File.separatorChar
@@ -120,8 +120,8 @@ public class FileChoosers extends JFrame {
 				"This is the directory that contains the tipster files (w9_1..w9_9) and the ptb-tipster map files (ptb_*.tbl files).",
 				JFileChooser.DIRECTORIES_ONLY);*/
 		outputCommentRootTF = createTFGroup(
-				"GoldComment",
-				"This is the directory such that GoldComment"
+				"WorkComment",
+				"This is the directory such that WorkComment"
 						+ File.separatorChar
 						+ "00"
 						+ File.separatorChar
@@ -375,7 +375,7 @@ public class FileChoosers extends JFrame {
 
 	private JTextField createTFGroup(final String labelText,
 			final String description, final int type, final int index) {
-		final JLabel lbl = new JLabel(labelText + ":");
+		final JLabel lbl = new JLabel(labelText + ": ");
 		final JTextField tf = new JTextField(20);
 		final JButton btn = new JButton("Browse...");
 		lbl.setToolTipText(description);
