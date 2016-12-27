@@ -1,10 +1,10 @@
 #This file contains user settings for your Annotator. It is safe to delete, but you will lose your settings.
-#Sat Dec 10 07:52:47 SGT 2016
-commentRoot2=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\S CONJUNCTIONS\\ADJUDICATION\\contrast-concession-review-S4-S7\\sam-comments
-commentRoot1=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\S CONJUNCTIONS\\ADJUDICATION\\contrast-concession-review-S4-S7\\robin-comments
-outputCommentRoot=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\S CONJUNCTIONS\\ADJUDICATION\\contrast-concession-review-S4-S7\\gold-comments
-rawRoot=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\S CONJUNCTIONS\\ADJUDICATION\\contrast-concession-review-S4-S7\\raw
-outputRoot=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\S CONJUNCTIONS\\ADJUDICATION\\contrast-concession-review-S4-S7\\gold
-annRoot2=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\S CONJUNCTIONS\\ADJUDICATION\\contrast-concession-review-S4-S7\\sam
-annRoot1=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\S CONJUNCTIONS\\ADJUDICATION\\contrast-concession-review-S4-S7\\robin
+#Mon Dec 26 09:47:19 SGT 2016
+commentRoot2=
+commentRoot1=
+outputCommentRoot=
+rawRoot=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\ORIGINALS\\CORPUS\\files\\textRoot\\textRoot
+outputRoot=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\S CONJUNCTIONS\\GOLD-FOR-LEXICON1\\linked
+annRoot2=
+annRoot1=
 lang=English
