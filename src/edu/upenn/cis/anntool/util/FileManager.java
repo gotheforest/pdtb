@@ -301,14 +301,14 @@ public class FileManager {
 			Properties commentMap = new Properties();
 			/* Load comments */
 			if (outputCommentRoot != null) {
-			commentSec = new File(outputCommentRoot, sec);
-			commentFil = new File(commentSec, fil);
+				commentSec = new File(outputCommentRoot, sec);
+				commentFil = new File(commentSec, fil);
 
-			if (commentFil.exists()) {
-				FileInputStream in = new FileInputStream(commentFil);
-				commentMap.load(in);
-				in.close();
-			}
+				if (commentFil.exists()) {
+					FileInputStream in = new FileInputStream(commentFil);
+					commentMap.load(in);
+					in.close();
+				}
 			}
 			
 			/* Load ann file into the relation list */
@@ -321,7 +321,11 @@ public class FileManager {
 				for (String next = in.readLine(); next != null; next = in
 						.readLine()) {
 					Relation relation = new Relation(this, next, commentMap);
+					
+					System.out.println("RELATION IS: " + relation.getIdentifier() + " :: " + relation.getRelationType() + " :: " + relation.getLocationStart() + " :: " + relation.getGroupNumber());
+					
 					if (!relationList.contains(relation)) {
+						System.out.println("NOT CONTAINED - ADDING");
 						relationList.add(relation);
 					} else {
 						System.err.println("Duplicate Relation: " + fil + " "
@@ -349,11 +353,8 @@ public class FileManager {
 							new InputStreamReader(new BufferedInputStream(
 									new FileInputStream(adjudicationFile)),
 									"UTF8"));
-					int iii=0;
-					System.out.println("ADJU: " + adjudicationFile);
 					for (String next = in.readLine(); next != null; next = in
 							.readLine()) {
-						System.out.println("III: " + iii + " " + next);
 						adjudicationList.add(new Relation(this, next,
 								currentCommentMap, adjudicationRoot.getPath()));
 
@@ -422,8 +423,11 @@ public class FileManager {
 			if (parent == null) {
 				parent = new Relation(adjudication);
 				relationList.add(parent);
+				System.out.println("parent before adding adju: " + parent.isGhost());
 			}
 			parent.addAdjudication(adjudication);
+			System.out.println("parent after adding adju: " + parent.isGhost());
+			
 		}
 
 		/*

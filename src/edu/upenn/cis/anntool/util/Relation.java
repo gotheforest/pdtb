@@ -111,6 +111,7 @@ public class Relation implements Comparable<Relation>, Transferable {
 	 * Used to create a ghost copy
 	 */
 	public Relation(Relation relation) {
+		System.out.println("Creating Ghost: " + relation.originalVals[LABELS.identifier.ordinal()]);
 		this.isGhost = true;
 		this.fileManager = relation.fileManager;
 		this.originalVals = new String[LABELS.values().length];
@@ -367,7 +368,6 @@ public class Relation implements Comparable<Relation>, Transferable {
 	}
 
 	public String getRelationID() {
-		System.out.println("original vals length: " + originalVals.length);
 		return originalVals[LABELS.rel.ordinal()] + sep
 				+ originalVals[LABELS.connSpanList.ordinal()] + sep
 				+ originalVals[LABELS.arg1SpanList.ordinal()] + sep
@@ -474,12 +474,13 @@ public class Relation implements Comparable<Relation>, Transferable {
 		}
 	}
 
-	public int getLocationStart() {
+	public int getLocationStart() {		
 		if (isRejected) {
 			String value = originalVals[LABELS.identifier.ordinal()];
+			
 			if (value.contains("..")) {
-				return getLocationStart(LABELS.identifier);
-			} else {
+				return getLocationStart(LABELS.identifier);				 
+			} else {		
 				return getLocationStart(LABELS.arg2SpanList);
 			}
 		}
@@ -517,7 +518,7 @@ public class Relation implements Comparable<Relation>, Transferable {
 				//else {
 				//	originalVals[LABELS.identifier.ordinal()] = "0..1";
 				//}
-			} else if (relTypeLabel == RELTYPELABELS.Implicit || relTypeLabel == RELTYPELABELS.EntRel) {
+			} else if (relTypeLabel == RELTYPELABELS.Implicit || relTypeLabel == RELTYPELABELS.EntRel || relTypeLabel == RELTYPELABELS.NoRel) {
 				if (originalVals[LABELS.arg2SpanList.ordinal()].equals("")) {
 					//originalVals[LABELS.identifier.ordinal()] = "0";
 				} else {

@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" href="style.css" type="text/css" />
 <script type="text/javascript" src="smoothscroll.js" ></script>
-<title>PDTB: Penn Discourse Treebank</title>
+<title>PDTB Annotator</title>
 </head>
 <body>
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
@@ -101,7 +101,7 @@ Once Java is running on your computer, download the Annotator using the followin
 </p>
 
 <p>
-<a href="http://www.seas.upenn.edu/~pdtb/tools/Annotator_v4.0_java8.jar">Annotator version 4 for Java 8</a>. 
+<a href="http://www.seas.upenn.edu/~pdtb/tools/Annotator_v4.1_java8.jar">Annotator version 4 for Java 8</a>. 
 </p>
 
 <p>
@@ -109,7 +109,7 @@ Users who prefer to use an older JRE (minimum Java 6) can download this version 
 </p>
 
 <p>
-<a href="http://www.seas.upenn.edu/~pdtb/tools/Annotator_v4.0_java6.jar">Annotator version 4 for Java 6</a>.
+<a href="http://www.seas.upenn.edu/~pdtb/tools/Annotator_v4.1_java6.jar">Annotator version 4 for Java 6</a>.
 </p>
 
 <p>
@@ -128,9 +128,9 @@ A config file named Options.cfg is also necessary to run the tool:
 Gather the text files that you wish to annotate. Ensure that these files are saved in UTF-8 (Unicode).  There are several ways to convert a file to UTF-8. The following sites offer several suggestions:
 </p>
 
-<a href="http://support.smqueue.com/support/solutions/articles/159273-saving-a-text-file-on-a-mac-or-pc-in-utf-8">Saving a text file on a Mac or PC in UTF-8</a>
+<a href="http://support.smqueue.com/support/solutions/articles/159273-saving-a-text-file-on-a-mac-or-pc-in-utf-8" target="_blank">Saving a text file on a Mac or PC in UTF-8</a>
 <br/>
-<a href="https://docs.moodle.org/24/en/Converting_files_to_UTF-8">Converting files to UTF-8</a>
+<a href="https://docs.moodle.org/24/en/Converting_files_to_UTF-8" target="_blank">Converting files to UTF-8</a>
 
 <h5>Step 2 - Organize your text files into a directory structure</h5>
 
@@ -194,22 +194,27 @@ The tool allows you to add comments for each token that is annotated. When you a
 For this to work, simply create an empty directory where your comment files will be saved.  As before, this comments base directory can be named as you wish so long as it is different from the directories created in Steps 2 and 3.
 </p>
 
+<p>
+Download the following <a href="./AnnotatorResources/SampleSetup.zip">sample setup</a> for an example set of directories that can be loaded into the Annotator.
+</p>
+
+
 <h4>Running the Tool</h4>
 
 <p>
-To load the tool, first place the Options.cfg that you downloaded into the same directory as Adjudicator.jar.  Then launch Adjudicator.jar either by double-clicking (Windows/MAC) or running the following command (UNIX/Linux/MAC) from the current directory:
+To load the tool, first place the Options.cfg that you downloaded into the same directory as your Annotator jar file.  Then launch tool either by double-clicking (Windows/MAC) or running the following command (UNIX/Linux/MAC) from the current directory:
 </p>
 
 <p>
-java -jar Adjudicator.jar
+java -jar Annotator_v4.0_java8.jar
 </p>
 
 <p>
-A file chooser window will appear.  Only the top two rows (or three if there is a base directory for comments) are relevant.  For "RawRoot", select the path to the base directory containing the raw text files that has been prepared according to the instructions above. For "AnnRoot", select the path to the annotation base directory.
+A file chooser window will appear.  Only the top three rows are relevant.  For "RawRoot", select the path to the base directory containing your text files. For "WorkRoot", select the path to the annotation base directory.  For "WorkComment", select the path to the comments base directory.
 </p>
 
 <p>
-<img src="./images/chooser.jpg" id="resize">
+<img src="./AnnotatorResources/chooser.jpg" id="resize"/>
 </p>
 
 <p>
@@ -217,14 +222,59 @@ Click on OK and the tool should launch.
 </p>
 
 <p>
-<img src="./annotator/mainpanel.jpg" id="resize">
+<table>
+<caption align="bottom"><i>A screenshot of the Annotator in action. The working directory is named "alan" here and appears on the Relation List panel.</i></caption>
+<tr><td>
+<img src="./AnnotatorResources/annotator.jpg" id="resize"/>
+</td></tr>
+</table>
+</p>
+
+<h4>Adjudication</h4>
+
+<p>
+The Annotator can also be used as an adjudication tool. It allows an adjudicator to view the work of up to two annotators and to select and/or edit the annotations into gold standard files.
+</p>
+
+<p>
+To use the tool as an adjudicator, first gather the completed annotation files from your annotator(s), who will have set up their annotation directories as described above.  Then, as before, set up your text directories, an empty working directory (for your gold files) and an empty comments directory (for any comments on your gold tokens).
+</p>
+
+<p>
+Launch the tool and fill in the necessary fields as in the example below:
+</p>
+
+<p>
+<table>
+<tr>
+<td width=50%>
+<img src="./AnnotatorResources/chooser2.jpg" id="resize"/>
+</td>
+<td withd=25%>
+<i>In this example, the WorkRoot points to the empty directory that will contain your gold files. Ann1Root points to the directory containing the completed annotations of the first annotator and Ann2Root the completed annotations of the second annotator. Corresponding comment directories for each of these three are also specified.</i>
+</td>
+</tr>
+</table>
+</p>
+
+<p>
+Once the relevant directories are selected, launch the tool as before.
+</p>
+
+<p>
+<table>
+<caption align="bottom"><i>An example of the Annotator used for adjudication. Two annotators (Alan and Rashmi) are shown. The adjudicator selects and/or edits annotator tokens into gold files.</i></caption>
+<tr><td>
+<img src="./AnnotatorResources/adjudicator.jpg" id="resize"/>
+</td></tr>
+</table>
 </p>
 
 <h4>File Format</h4>
 
 <p>
-Annotations are stored within a simple file format - each token is stored as a pipe-delimited row of text. Seven new fields have been added to the original pipe-delimited format and these are marked in <span style="color:blue;">blue</span> in the table below:
-</p><p>
+The Annotator uses a simple file format - each token is stored as a pipe-delimited row of text. These fields are listed below (for those familiar with the original version of the tool, new fields are marked in <span style="color:blue;">blue</span>):
+</p>
 
 </p><table border="1" width="80%">
   <tbody><tr><th colspan="2">Description of fields within <i>ann</i> files</th>
@@ -258,8 +308,8 @@ Annotations are stored within a simple file format - each token is stored as a p
 
   <tr style="color:blue;"><td>Adju Reason</td><td>The Adjudication Reason</td></tr>
   <tr style="color:blue;"><td>Adju Disagr</td><td>The type of the Adjudication disagreement</td></tr>
-  <tr style="color:blue;"><td>PB Verb</td><td>The PropBank verb of the main clause of this relation</td></tr>
   <tr style="color:blue;"><td>PB Role</td><td>The PropBank role of the PropBank verb</td></tr>
+  <tr style="color:blue;"><td>PB Verb</td><td>The PropBank verb of the main clause of this relation</td></tr>
   <tr style="color:blue;"><td>Identifier</td><td>The unique identifier of this token within the annotation file</td></tr>
   <tr style="color:blue;"><td>Task</td><td>The name of the task for which the token was annotated</td></tr>
   <tr style="color:blue;"><td>Link</td><td>The link id of the token</td></tr>

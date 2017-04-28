@@ -1,10 +1,10 @@
 #This file contains user settings for your Annotator. It is safe to delete, but you will lose your settings.
-#Mon Dec 26 09:47:19 SGT 2016
+#Mon Apr 17 16:52:01 SGT 2017
 commentRoot2=
 commentRoot1=
 outputCommentRoot=
-rawRoot=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\ORIGINALS\\CORPUS\\files\\textRoot\\textRoot
-outputRoot=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\S CONJUNCTIONS\\GOLD-FOR-LEXICON1\\linked
+rawRoot=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\PNC TOKENS\\adjudication\\PNC_B2\\raw
+outputRoot=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\PNC TOKENS\\adjudication\\PNC_B2\\alan
 annRoot2=
 annRoot1=
 lang=English

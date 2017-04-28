@@ -393,10 +393,11 @@ public class RelListPanel extends JPanel implements PanelInterface {
 				if (node != null) {
 					Relation relation = (Relation) node.getUserObject();
 					if (relation.getAdjudications().size() > 0) {
+						System.out.println("REJECT ACTION");
 						//mainFrame.deleteAction((Relation) node.getUserObject());
-						mainFrame.rejectAction();
-					
+						mainFrame.rejectAction();						
 					} else {
+						System.out.println("ANN REJECT ACTION");
 						mainFrame.annotatorRejectAction();
 					}
 				}

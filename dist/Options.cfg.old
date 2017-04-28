@@ -86,11 +86,8 @@ Expansion
 .Level-of-detail
 ..Arg1-as-detail
 ..Arg2-as-detail
-.Hypophora
 .Equivalence
 .Instantiation
-..Arg1-as-instance
-..Arg2-as-instance
 .Exception
 ..Arg1-as-excpt
 ..Arg2-as-excpt
