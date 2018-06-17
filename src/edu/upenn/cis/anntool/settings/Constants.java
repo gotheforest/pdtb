@@ -35,7 +35,7 @@ public class Constants {
 	}
 
 	public static enum RELTYPELABELS {
-		Explicit, Implicit, AltLex, EntRel, NoRel
+		Explicit, Implicit, AltLex, Hypophora, EntRel, NoRel
 	}
 
 	public static final LABELS[] expLabels = new LABELS[] { LABELS.rel,
@@ -64,7 +64,11 @@ public class Constants {
 
 	public static final LABELS[] altLabels = expLabels;
 
-	/* Added ConnSpanList for sentence location */
+	public static final LABELS[] hypLabels = { LABELS.rel, LABELS.connAttrSpanList,
+			LABELS.arg1SpanList, LABELS.arg2SpanList, LABELS.arg1AttrSpanList, LABELS.arg2AttrSpanList,
+			LABELS.adjudicationReason, LABELS.adjudicationDisagreement,
+			LABELS.propBankRole, LABELS.propBankVerb, LABELS.identifier, LABELS.identifierType, LABELS.linkGroup};
+	
 	public static final LABELS[] entLabels = { LABELS.rel, LABELS.connAttrSpanList,
 			LABELS.arg1SpanList, LABELS.arg2SpanList, LABELS.arg1AttrSpanList, LABELS.arg2AttrSpanList,
 			LABELS.adjudicationReason, LABELS.adjudicationDisagreement,
@@ -96,6 +100,8 @@ public class Constants {
 			return impLabels;
 		case AltLex:
 			return altLabels;
+		case Hypophora:
+			return hypLabels;
 		case EntRel:
 			return entLabels;
 		case NoRel:

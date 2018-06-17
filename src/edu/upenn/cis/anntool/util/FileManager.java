@@ -322,13 +322,10 @@ public class FileManager {
 						.readLine()) {
 					Relation relation = new Relation(this, next, commentMap);
 					
-					System.out.println("RELATION IS: " + relation.getIdentifier() + " :: " + relation.getRelationType() + " :: " + relation.getLocationStart() + " :: " + relation.getGroupNumber());
-					
 					if (!relationList.contains(relation)) {
-						System.out.println("NOT CONTAINED - ADDING");
 						relationList.add(relation);
 					} else {
-						System.err.println("Duplicate Relation: " + fil + " "
+						System.err.println("ERROR: Duplicate Relation: " + fil + " "
 								+ next);
 					}
 				}

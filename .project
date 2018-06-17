@@ -18,17 +18,17 @@
 		<link>
 			<name>bin</name>
 			<type>2</type>
-			<location>C:/Users/alanlee/Desktop/DISCOURSE FRESH/GITHUB/pdtb/bin</location>
+			<location>/home/alanlee/git/pdtb/bin</location>
 		</link>
 		<link>
 			<name>build.xml</name>
 			<type>1</type>
-			<location>C:/Users/alanlee/Desktop/DISCOURSE FRESH/GITHUB/pdtb/build.xml</location>
+			<location>/home/alanlee/git/pdtb/build.xml</location>
 		</link>
 		<link>
 			<name>src</name>
 			<type>2</type>
-			<location>C:/Users/alanlee/Desktop/DISCOURSE FRESH/GITHUB/pdtb/src</location>
+			<location>/home/alanlee/git/pdtb/src</location>
 		</link>
 	</linkedResources>
 </projectDescription>

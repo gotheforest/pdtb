@@ -1,10 +1,10 @@
 #This file contains user settings for your Annotator. It is safe to delete, but you will lose your settings.
-#Wed Mar 29 15:33:56 SGT 2017
+#Sun Jun 17 12:59:04 MYT 2018
 commentRoot2=
 commentRoot1=
-outputCommentRoot=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\OTHER S\\GOLD\\OS_B7\\OS_B7_gold.tar\\OS_B7_gold\\gold-comments
-rawRoot=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\OTHER S\\round-two\\batches2-corrected\\OS_B7\\raw
-outputRoot=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\OTHER S\\GOLD\\OS_B7\\OS_B7_gold.tar\\OS_B7_gold\\gold
-annRoot2=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\OTHER S\\ADJUDICATION\\OS_B7\\sam
-annRoot1=C\:\\Users\\alanlee\\Desktop\\DISCOURSE FRESH\\PROJECTS\\OTHER S\\ADJUDICATION\\OS_B7\\robin
+outputCommentRoot=/home/alanlee/pdtb/PROJECTS/HOMESTRETCH/MERGE/hypRoot/gold-comments
+rawRoot=/home/alanlee/pdtb/PROJECTS/HOMESTRETCH/MERGE/hypRoot/raw
+outputRoot=/home/alanlee/pdtb/PROJECTS/HOMESTRETCH/MERGE/hypRoot/gold
+annRoot2=
+annRoot1=
 lang=English
