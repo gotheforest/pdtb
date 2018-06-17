@@ -81,7 +81,8 @@ public class Constants {
 	public static final OptFeat relTypes = new OptFeat(new String[] {
 			RELTYPELABELS.Explicit.toString(),
 			RELTYPELABELS.Implicit.toString(), RELTYPELABELS.AltLex.toString(),
-			RELTYPELABELS.EntRel.toString(), RELTYPELABELS.NoRel.toString() },
+			RELTYPELABELS.Hypophora.toString(), RELTYPELABELS.EntRel.toString(), 
+			RELTYPELABELS.NoRel.toString() },
 			0);
 
 	public static final int spacing = 10;
