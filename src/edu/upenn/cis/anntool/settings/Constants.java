@@ -35,7 +35,7 @@ public class Constants {
 	}
 
 	public static enum RELTYPELABELS {
-		Explicit, Implicit, AltLex, Hypophora, EntRel, NoRel
+		Explicit, Implicit, AltLex, AltLexC, Hypophora, EntRel, NoRel
 	}
 
 	public static final LABELS[] expLabels = new LABELS[] { LABELS.rel,
@@ -63,6 +63,16 @@ public class Constants {
 			LABELS.propBankRole, LABELS.propBankVerb, LABELS.identifier, LABELS.identifierType, LABELS.linkGroup};
 
 	public static final LABELS[] altLabels = expLabels;
+	
+	public static final LABELS[] altCLabels = new LABELS[] { LABELS.rel,
+			LABELS.sClass1A, LABELS.sClass1B, LABELS.sup1SpanList,
+			LABELS.arg1SpanList, LABELS.arg1AttrSrc, LABELS.arg1AttrType,
+			LABELS.arg1AttrPol, LABELS.arg1AttrDet, LABELS.arg1AttrSpanList,
+			LABELS.arg2SpanList, LABELS.arg2AttrSrc, LABELS.arg2AttrType,
+			LABELS.arg2AttrPol, LABELS.arg2AttrDet, LABELS.arg2AttrSpanList,
+			LABELS.sup2SpanList, LABELS.adjudicationReason, LABELS.adjudicationDisagreement,
+			LABELS.propBankRole, LABELS.propBankVerb, LABELS.identifier, LABELS.identifierType, LABELS.linkGroup};
+
 
 	public static final LABELS[] hypLabels = { LABELS.rel, LABELS.connAttrSpanList,
 			LABELS.arg1SpanList, LABELS.arg2SpanList, LABELS.arg1AttrSpanList, LABELS.arg2AttrSpanList,
@@ -80,9 +90,9 @@ public class Constants {
 
 	public static final OptFeat relTypes = new OptFeat(new String[] {
 			RELTYPELABELS.Explicit.toString(),
-			RELTYPELABELS.Implicit.toString(), RELTYPELABELS.AltLex.toString(),
-			RELTYPELABELS.Hypophora.toString(), RELTYPELABELS.EntRel.toString(), 
-			RELTYPELABELS.NoRel.toString() },
+			RELTYPELABELS.Implicit.toString(), RELTYPELABELS.AltLex.toString(), 
+			RELTYPELABELS.AltLexC.toString(), RELTYPELABELS.Hypophora.toString(), 
+			RELTYPELABELS.EntRel.toString(), RELTYPELABELS.NoRel.toString() },
 			0);
 
 	public static final int spacing = 10;
@@ -101,6 +111,8 @@ public class Constants {
 			return impLabels;
 		case AltLex:
 			return altLabels;
+		case AltLexC:
+			return altCLabels;
 		case Hypophora:
 			return hypLabels;
 		case EntRel:

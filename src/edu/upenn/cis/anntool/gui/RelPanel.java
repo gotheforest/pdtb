@@ -580,16 +580,11 @@ public class RelPanel extends JPanel {
 	}
 	
 	public Relation rejectAction() {
-		System.out.println("relation ghost status: " + relation.isGhost());
 		relation.setNoVals(relComponents, commentPane);
 		List<Relation> model = fileManager.getRelationList();
-		System.out.println("model size: " + model.size());
-		if (model.contains(relation)) {
-			System.out.println("CONTAINS");			
+		if (model.contains(relation)) {		
 			Relation original = model.get(model.indexOf(relation));
-			System.out.println("original ghost status: " + original.isGhost());
 			if (original.isGhost()) {
-				System.out.println("GHOST");
 				relation = original;
 				relation.setNewVals(relComponents, commentPane);
 			}

@@ -111,7 +111,6 @@ public class Relation implements Comparable<Relation>, Transferable {
 	 * Used to create a ghost copy
 	 */
 	public Relation(Relation relation) {
-		System.out.println("Creating Ghost: " + relation.originalVals[LABELS.identifier.ordinal()]);
 		this.isGhost = true;
 		this.fileManager = relation.fileManager;
 		this.originalVals = new String[LABELS.values().length];
@@ -594,6 +593,13 @@ public class Relation implements Comparable<Relation>, Transferable {
 	 * */
 	
 	public boolean isSimilar(Relation o) {
+		if ( (getRelTypeLabel() == RELTYPELABELS.EntRel && o.getRelTypeLabel() == RELTYPELABELS.AltLex)   ||
+			 (getRelTypeLabel() == RELTYPELABELS.AltLex && o.getRelTypeLabel() == RELTYPELABELS.EntRel)	) {
+			if (getIdentifier().equals(o.getIdentifier()) && getTask().equals(o.getTask())) {
+				return true;
+			}
+		}
+		
 		if ( (getRelTypeLabel() == RELTYPELABELS.Implicit && o.getRelTypeLabel() == RELTYPELABELS.AltLex) ||
 			 (getRelTypeLabel() == RELTYPELABELS.AltLex && o.getRelTypeLabel() == RELTYPELABELS.Implicit) ||
 			 (getRelTypeLabel() == RELTYPELABELS.EntRel && o.getRelTypeLabel() == RELTYPELABELS.AltLex)   ||
@@ -734,7 +740,8 @@ public class Relation implements Comparable<Relation>, Transferable {
 						.getRelTypeLabel() == RELTYPELABELS.Explicit)) {
 			return getLocationRelType() - o.getLocationRelType();
 		} else {
-			return 0;
+			return 1; //by default, return two similar relations by arbitrarily ordering one after the other
+//			return 0;
 		}
 	}
 

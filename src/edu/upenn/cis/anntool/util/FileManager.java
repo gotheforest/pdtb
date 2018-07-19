@@ -71,9 +71,6 @@ public class FileManager {
 
 	public FileManager(String rawRoot, String annRoot, String tipsterRoot,
 			String outputCommentRoot, List<String> adjudicationRoots, List<String> commentRoots, Language lang) {
-		System.out.println("RAW: " + rawRoot);
-		System.out.println("ANN: " + annRoot);
-		System.out.println("COM: " + outputCommentRoot);
 		
 		this.rawRoot = new File(rawRoot.trim());
 		this.annRoot = new File(annRoot.trim());
@@ -420,11 +417,8 @@ public class FileManager {
 			if (parent == null) {
 				parent = new Relation(adjudication);
 				relationList.add(parent);
-				System.out.println("parent before adding adju: " + parent.isGhost());
 			}
-			parent.addAdjudication(adjudication);
-			System.out.println("parent after adding adju: " + parent.isGhost());
-			
+			parent.addAdjudication(adjudication);		
 		}
 
 		/*
@@ -527,7 +521,6 @@ public class FileManager {
 					//commentFil.delete();
 					outputCommentFil.delete();
 				}	 else {			
-					System.out.println("WRITING COMMENTS");
 					//commentSec.mkdirs();
 					outputCommentSec.mkdirs();				
 					//FileOutputStream commentOut = new FileOutputStream(commentFil);
