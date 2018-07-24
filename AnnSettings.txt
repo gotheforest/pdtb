@@ -1,10 +1,10 @@
 #This file contains user settings for your Annotator. It is safe to delete, but you will lose your settings.
-#Thu Jul 19 13:51:32 MYT 2018
+#Tue Jul 24 21:48:45 MYT 2018
 commentRoot2=
 commentRoot1=
-outputCommentRoot=/home/alanlee/pdtb/PROJECTS/HOMESTRETCH/MERGE-V4/pdtbMerge-v4/gold-comments
-rawRoot=/home/alanlee/pdtb/PROJECTS/HOMESTRETCH/MERGE-V4/pdtbMerge-v4/raw
-outputRoot=/home/alanlee/pdtb/PROJECTS/HOMESTRETCH/MERGE-V4/pdtbMerge-v4/gold
+outputCommentRoot=/home/alanlee/pdtb/PROJECTS/HOMESTRETCH/MERGE-V4/test/gold-comments
+rawRoot=/home/alanlee/pdtb/PROJECTS/HOMESTRETCH/MERGE-V4/test/raw
+outputRoot=/home/alanlee/pdtb/PROJECTS/HOMESTRETCH/MERGE-V4/test/gold
 annRoot2=
 annRoot1=
 lang=English

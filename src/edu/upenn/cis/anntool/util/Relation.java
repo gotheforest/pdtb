@@ -612,6 +612,49 @@ public class Relation implements Comparable<Relation>, Transferable {
 		return getIdentifier().equals(o.getIdentifier());
 	}
 	
+	
+	public boolean isIdentical(Relation o) {
+		if (getRelTypeLabel() == o.getRelTypeLabel()) {
+			boolean arg1Same = originalVals[LABELS.arg1SpanList.ordinal()].equals(o.originalVals[LABELS.arg1SpanList.ordinal()]);
+			boolean arg2Same = originalVals[LABELS.arg2SpanList.ordinal()].equals(o.originalVals[LABELS.arg2SpanList.ordinal()]);
+			
+			if (getRelTypeLabel() == RELTYPELABELS.Explicit) {
+				boolean connSame = originalVals[LABELS.connSpanList.ordinal()].equals(o.originalVals[LABELS.connSpanList.ordinal()]);
+				boolean sense1aSame = originalVals[LABELS.sClass1A.ordinal()].equals(o.originalVals[LABELS.sClass1A.ordinal()]);
+				boolean sense1bSame = originalVals[LABELS.sClass1B.ordinal()].equals(o.originalVals[LABELS.sClass1B.ordinal()]);				
+				return connSame && arg1Same && arg2Same && sense1aSame && sense1bSame;
+			} else if (getRelTypeLabel() == RELTYPELABELS.Implicit) {
+				boolean conn1Same = originalVals[LABELS.conn1.ordinal()].equals(o.originalVals[LABELS.conn1.ordinal()]);
+				boolean conn2Same = originalVals[LABELS.conn2.ordinal()].equals(o.originalVals[LABELS.conn2.ordinal()]);				
+				boolean sense1aSame = originalVals[LABELS.sClass1A.ordinal()].equals(o.originalVals[LABELS.sClass1A.ordinal()]);
+				boolean sense1bSame = originalVals[LABELS.sClass1B.ordinal()].equals(o.originalVals[LABELS.sClass1B.ordinal()]);
+				boolean sense2aSame = originalVals[LABELS.sClass2A.ordinal()].equals(o.originalVals[LABELS.sClass2A.ordinal()]);
+				boolean sense2bSame = originalVals[LABELS.sClass2B.ordinal()].equals(o.originalVals[LABELS.sClass2B.ordinal()]);				
+				return conn1Same && conn2Same && arg1Same && arg2Same && sense1aSame && sense1bSame && sense2aSame && sense2bSame;
+			} else if (getRelTypeLabel() == RELTYPELABELS.AltLex) {
+				boolean connSame = originalVals[LABELS.connSpanList.ordinal()].equals(o.originalVals[LABELS.connSpanList.ordinal()]);
+				boolean sense1aSame = originalVals[LABELS.sClass1A.ordinal()].equals(o.originalVals[LABELS.sClass1A.ordinal()]);
+				boolean sense1bSame = originalVals[LABELS.sClass1B.ordinal()].equals(o.originalVals[LABELS.sClass1B.ordinal()]);				
+				return connSame && arg1Same && arg2Same && sense1aSame && sense1bSame;
+			} else if (getRelTypeLabel() == RELTYPELABELS.AltLexC) {
+				boolean sense1aSame = originalVals[LABELS.sClass1A.ordinal()].equals(o.originalVals[LABELS.sClass1A.ordinal()]);
+				boolean sense1bSame = originalVals[LABELS.sClass1B.ordinal()].equals(o.originalVals[LABELS.sClass1B.ordinal()]);	
+				return arg1Same && arg2Same && sense1aSame && sense1bSame;				
+			} else if (getRelTypeLabel() == RELTYPELABELS.Hypophora) {
+				return arg1Same && arg2Same;
+			} else if (getRelTypeLabel() == RELTYPELABELS.EntRel) {
+				return arg1Same && arg2Same;
+			} else if (getRelTypeLabel() == RELTYPELABELS.NoRel) {
+				return arg1Same && arg2Same;
+			} else {
+				return false;
+			}
+		}
+		
+		return false;
+	}
+	
+	
 /*	public boolean isSimilar(Relation o) {	
 		if ((getRelTypeLabel() == RELTYPELABELS.Explicit)
 			&& 
@@ -739,12 +782,13 @@ public class Relation implements Comparable<Relation>, Transferable {
 				|| (getRelTypeLabel() != RELTYPELABELS.Explicit && o
 						.getRelTypeLabel() == RELTYPELABELS.Explicit)) {
 			return getLocationRelType() - o.getLocationRelType();
+		} else if (isIdentical(o)) {
+			return 0;
 		} else {
-			return 1; //by default, return two similar relations by arbitrarily ordering one after the other
-//			return 0;
+			return 1;
 		}
 	}
-
+	
 	/**
 	 * Used by the contains method to see if a relation is already in the
 	 * relation list. Not a full compare. Compares using the relation type and
