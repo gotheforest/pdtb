@@ -64,15 +64,7 @@ public class Constants {
 
 	public static final LABELS[] altLabels = expLabels;
 	
-	public static final LABELS[] altCLabels = new LABELS[] { LABELS.rel,
-			LABELS.sClass1A, LABELS.sClass1B, LABELS.sup1SpanList,
-			LABELS.arg1SpanList, LABELS.arg1AttrSrc, LABELS.arg1AttrType,
-			LABELS.arg1AttrPol, LABELS.arg1AttrDet, LABELS.arg1AttrSpanList,
-			LABELS.arg2SpanList, LABELS.arg2AttrSrc, LABELS.arg2AttrType,
-			LABELS.arg2AttrPol, LABELS.arg2AttrDet, LABELS.arg2AttrSpanList,
-			LABELS.sup2SpanList, LABELS.adjudicationReason, LABELS.adjudicationDisagreement,
-			LABELS.propBankRole, LABELS.propBankVerb, LABELS.identifier, LABELS.identifierType, LABELS.linkGroup};
-
+	public static final LABELS[] altCLabels = expLabels;
 
 	public static final LABELS[] hypLabels = { LABELS.rel, LABELS.connAttrSpanList,
 			LABELS.arg1SpanList, LABELS.arg2SpanList, LABELS.arg1AttrSpanList, LABELS.arg2AttrSpanList,

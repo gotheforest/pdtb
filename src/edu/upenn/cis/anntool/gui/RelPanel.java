@@ -103,6 +103,7 @@ public class RelPanel extends JPanel {
 					.ordinal()];
 			if (relType.equals(RELTYPELABELS.Explicit.toString())
 					|| relType.equals(RELTYPELABELS.AltLex.toString())
+					|| relType.equals(RELTYPELABELS.AltLexC.toString())
 					|| b != connSpanListButton) {
 				mainFrame.spanAction(b);
 				mainFrame.inputAction((JComponent) e.getSource(), spanButtons);

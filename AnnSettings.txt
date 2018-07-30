@@ -1,5 +1,5 @@
 #This file contains user settings for your Annotator. It is safe to delete, but you will lose your settings.
-#Tue Jul 24 21:48:45 MYT 2018
+#Mon Jul 30 11:57:02 MYT 2018
 commentRoot2=
 commentRoot1=
 outputCommentRoot=/home/alanlee/pdtb/PROJECTS/HOMESTRETCH/MERGE-V4/test/gold-comments

@@ -386,6 +386,7 @@ public class Relation implements Comparable<Relation>, Transferable {
 		switch (relTypeLabel) {
 		case Explicit:
 		case AltLex:
+		case AltLexC:
 			isComplete &= !originalVals[LABELS.connSpanList.ordinal()]
 					.equals("");
 			isComplete &= !originalVals[LABELS.connAttrSrc.ordinal()]
@@ -637,9 +638,10 @@ public class Relation implements Comparable<Relation>, Transferable {
 				boolean sense1bSame = originalVals[LABELS.sClass1B.ordinal()].equals(o.originalVals[LABELS.sClass1B.ordinal()]);				
 				return connSame && arg1Same && arg2Same && sense1aSame && sense1bSame;
 			} else if (getRelTypeLabel() == RELTYPELABELS.AltLexC) {
+				boolean connSame = originalVals[LABELS.connSpanList.ordinal()].equals(o.originalVals[LABELS.connSpanList.ordinal()]);
 				boolean sense1aSame = originalVals[LABELS.sClass1A.ordinal()].equals(o.originalVals[LABELS.sClass1A.ordinal()]);
-				boolean sense1bSame = originalVals[LABELS.sClass1B.ordinal()].equals(o.originalVals[LABELS.sClass1B.ordinal()]);	
-				return arg1Same && arg2Same && sense1aSame && sense1bSame;				
+				boolean sense1bSame = originalVals[LABELS.sClass1B.ordinal()].equals(o.originalVals[LABELS.sClass1B.ordinal()]);				
+				return connSame && arg1Same && arg2Same && sense1aSame && sense1bSame;				
 			} else if (getRelTypeLabel() == RELTYPELABELS.Hypophora) {
 				return arg1Same && arg2Same;
 			} else if (getRelTypeLabel() == RELTYPELABELS.EntRel) {
