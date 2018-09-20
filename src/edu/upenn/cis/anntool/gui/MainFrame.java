@@ -151,7 +151,7 @@ public class MainFrame extends JFrame implements WindowListener {
 		// moves selection to the duplicate
 		Relation relation = relPanel.saveAction();
 		if (relation.getIdentifierSpan().equals("")) {	
-			if (relation.getRelationType().equals("Explicit") || relation.getRelationType().equals("AltLex")) {				
+			if (relation.getRelationType().equals("Explicit") || relation.getRelationType().equals("AltLex") || relation.getRelationType().equals("AltLexC")) {				
 				JOptionPane.showMessageDialog(this, "Set the Connective or AltLex span before saving");
 			} else {
 				JOptionPane.showMessageDialog(this, "Set the Arg2 span before saving");

@@ -24,8 +24,8 @@ public class ExecutableFunctions {
 		String commentFolder = "D:\\pdtb\\tmp";
 //		System.out.println("Relation count: "
 //				+ findDuplicateRelations(annFolder, rawFolder, commentFolder));
-		 System.out.println("Relation count: " +
-		 findDuplicateRelations(annFolder));
+//		 System.out.println("Relation count: " +
+//		 findDuplicateRelations(annFolder));
 	}
 
 	public static int findDuplicateRelations(String annRootStr,

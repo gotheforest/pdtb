@@ -55,7 +55,7 @@ public class TipsterParserBak extends DefaultHandler {
 
 	// When the parser encounters the end of an element, it calls this method
 	public void endElement(String name) {
-		System.out.println(xmlMap);
+		//System.out.println(xmlMap);
 		xmlMap.put(name, accumulator.toString());
 	}
 

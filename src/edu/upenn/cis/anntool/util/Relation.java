@@ -383,71 +383,72 @@ public class Relation implements Comparable<Relation>, Transferable {
 			e.printStackTrace();
 			return false;
 		}
-		switch (relTypeLabel) {
+
+		switch (relTypeLabel) {		
 		case Explicit:
-		case AltLex:
 		case AltLexC:
+		case AltLex:
 			isComplete &= !originalVals[LABELS.connSpanList.ordinal()]
 					.equals("");
-			isComplete &= !originalVals[LABELS.connAttrSrc.ordinal()]
+			/*isComplete &= !originalVals[LABELS.connAttrSrc.ordinal()]
 					.equals("");
 			isComplete &= !originalVals[LABELS.connAttrType.ordinal()]
 					.equals("");
 			isComplete &= !originalVals[LABELS.connAttrPol.ordinal()]
 					.equals("");
 			isComplete &= !originalVals[LABELS.connAttrDet.ordinal()]
-					.equals("");
+					.equals("");*/
 			isComplete &= !originalVals[LABELS.arg1SpanList.ordinal()]
 					.equals("");
-			isComplete &= !originalVals[LABELS.arg1AttrSrc.ordinal()]
+			/*isComplete &= !originalVals[LABELS.arg1AttrSrc.ordinal()]
 					.equals("");
 			isComplete &= !originalVals[LABELS.arg1AttrType.ordinal()]
 					.equals("");
 			isComplete &= !originalVals[LABELS.arg1AttrPol.ordinal()]
 					.equals("");
 			isComplete &= !originalVals[LABELS.arg1AttrDet.ordinal()]
-					.equals("");
+					.equals("");*/
 			isComplete &= !originalVals[LABELS.arg2SpanList.ordinal()]
 					.equals("");
-			isComplete &= !originalVals[LABELS.arg2AttrSrc.ordinal()]
+			/*isComplete &= !originalVals[LABELS.arg2AttrSrc.ordinal()]
 					.equals("");
 			isComplete &= !originalVals[LABELS.arg2AttrType.ordinal()]
 					.equals("");
 			isComplete &= !originalVals[LABELS.arg2AttrPol.ordinal()]
 					.equals("");
 			isComplete &= !originalVals[LABELS.arg2AttrDet.ordinal()]
-					.equals("");
+					.equals("");*/
 			isComplete &= !originalVals[LABELS.sClass1A.ordinal()].equals("");
 			break;
 		case Implicit:
-			isComplete &= !originalVals[LABELS.connAttrSrc.ordinal()]
+			/*isComplete &= !originalVals[LABELS.connAttrSrc.ordinal()]
 					.equals("");
 			isComplete &= !originalVals[LABELS.connAttrType.ordinal()]
 					.equals("");
 			isComplete &= !originalVals[LABELS.connAttrPol.ordinal()]
 					.equals("");
 			isComplete &= !originalVals[LABELS.connAttrDet.ordinal()]
-					.equals("");
+					.equals("");*/
 			isComplete &= !originalVals[LABELS.arg1SpanList.ordinal()]
 					.equals("");
-			isComplete &= !originalVals[LABELS.arg1AttrSrc.ordinal()]
+			/*isComplete &= !originalVals[LABELS.arg1AttrSrc.ordinal()]
 					.equals("");
 			isComplete &= !originalVals[LABELS.arg1AttrType.ordinal()]
 					.equals("");
 			isComplete &= !originalVals[LABELS.arg1AttrPol.ordinal()]
 					.equals("");
 			isComplete &= !originalVals[LABELS.arg1AttrDet.ordinal()]
-					.equals("");
+					.equals("");*/
 			isComplete &= !originalVals[LABELS.arg2SpanList.ordinal()]
 					.equals("");
-			isComplete &= !originalVals[LABELS.arg2AttrSrc.ordinal()]
+			/*isComplete &= !originalVals[LABELS.arg2AttrSrc.ordinal()]
 					.equals("");
 			isComplete &= !originalVals[LABELS.arg2AttrType.ordinal()]
 					.equals("");
 			isComplete &= !originalVals[LABELS.arg2AttrPol.ordinal()]
 					.equals("");
 			isComplete &= !originalVals[LABELS.arg2AttrDet.ordinal()]
-					.equals("");
+					.equals("");*/
 			isComplete &= !originalVals[LABELS.conn1.ordinal()].equals("");
 			isComplete &= !originalVals[LABELS.sClass1A.ordinal()].equals("");
 			// Slight simplification of logic 2011-10-17
@@ -462,6 +463,7 @@ public class Relation implements Comparable<Relation>, Transferable {
 					.equals("");
 			break;
 		}
+		//System.out.println(": " + isComplete);
 		return isComplete;
 	}
 
@@ -511,7 +513,7 @@ public class Relation implements Comparable<Relation>, Transferable {
 		
 		if (test.equals("DEFAULT") || test.equals("")) {
 			RELTYPELABELS relTypeLabel = getRelTypeLabel();
-			if (relTypeLabel == RELTYPELABELS.Explicit || relTypeLabel == RELTYPELABELS.AltLex) {
+			if (relTypeLabel == RELTYPELABELS.Explicit || relTypeLabel == RELTYPELABELS.AltLex || relTypeLabel == RELTYPELABELS.AltLexC) {
 				if (!originalVals[LABELS.connSpanList.ordinal()].equals("")) {
 					originalVals[LABELS.identifier.ordinal()] = originalVals[LABELS.connSpanList.ordinal()].split(";")[0];
 				}
