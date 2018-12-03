@@ -235,6 +235,11 @@ public class RelPanel extends JPanel {
 		propBankVerbPane.setEditable(false);
 		relComponents[LABELS.propBankVerb.ordinal()] = propBankVerbPane;
 				
+		PropBankTextPane provenancePane = new PropBankTextPane(LABELS.identifierType.toString() + ": ");
+		provenancePane.setEnabled(false);
+		provenancePane.setEditable(false);
+		relComponents[LABELS.identifierType.ordinal()] = provenancePane;
+		
 		PropBankTextPane identifierPane = new PropBankTextPane(LABELS.identifier.toString() + ": ");
 		relComponents[LABELS.identifier.ordinal()] = identifierPane;
 		
@@ -298,7 +303,7 @@ public class RelPanel extends JPanel {
 
 		addRow(new LABELS[] { LABELS.adjudicationReason });
 		addRow(new LABELS[] { LABELS.adjudicationDisagreement });
-		addRow(new LABELS[] { LABELS.propBankRole, LABELS.propBankVerb });
+		addRow(new LABELS[] { LABELS.propBankRole, LABELS.propBankVerb, LABELS.identifierType });
 		//addRow(new LABELS[] { LABELS.identifier, LABELS.identifierType });
 		addRow(new LABELS[] { LABELS.rel });
 		addRow(new LABELS[] { LABELS.conn1, LABELS.conn2 });

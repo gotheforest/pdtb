@@ -21,7 +21,7 @@ public class Constants {
 				"Sup2 Span"), adjudicationReason("AdjuReason"),
 				adjudicationDisagreement("AdjuDisagr"),
 				propBankRole("PBRole"), propBankVerb("PBVerb"),
-				identifier("Identifier"), identifierType("Identifier Type"), linkGroup("Link Group");
+				identifier("Identifier"), identifierType("Provenance"), linkGroup("Link Group");
 
 		private final String name;
 
