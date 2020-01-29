@@ -520,7 +520,7 @@ public class Relation implements Comparable<Relation>, Transferable {
 				//else {
 				//	originalVals[LABELS.identifier.ordinal()] = "0..1";
 				//}
-			} else if (relTypeLabel == RELTYPELABELS.Implicit || relTypeLabel == RELTYPELABELS.EntRel || relTypeLabel == RELTYPELABELS.NoRel) {
+			} else if (relTypeLabel == RELTYPELABELS.Implicit || relTypeLabel == RELTYPELABELS.Hypophora || relTypeLabel == RELTYPELABELS.EntRel || relTypeLabel == RELTYPELABELS.NoRel) {
 				if (originalVals[LABELS.arg2SpanList.ordinal()].equals("")) {
 					//originalVals[LABELS.identifier.ordinal()] = "0";
 				} else {
