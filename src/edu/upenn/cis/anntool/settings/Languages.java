@@ -53,8 +53,8 @@ public class Languages {
 	private void loadDefaults() {
 		languages = new Language[] {
 				new Language("English", "en", "US", "UTF8", "Default", "word"),
-				new Language("Hindi", "hi", "IN", "UTF8", "Default",
-						"character") };
+				new Language("Hindi", "hi", "IN", "UTF8", "Default", "character"),
+				new Language("Turkish", "tr", "TR", "UTF8", "Default", "character"),};
 	}
 
 	public Language[] values() {

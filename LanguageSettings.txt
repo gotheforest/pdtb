@@ -6,3 +6,4 @@ Hindi=hi,IN,UTF8,Default,character
 Japanese=ja,JP,EUC_JP,Arial Unicode MS,character
 Tamil=ta,IN,UTF8,Latha,character
 Urdu=ur,IN,UTF8,Nafees Web Naskh,character
+Turkish=tr,TR,UTF8,Default,character
